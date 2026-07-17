@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Henry Melvin — Portfolio</title>
+<meta name="description" content="Henry Melvin — Integrated Science and Technology student at James Madison University, Engineer Intern at Ryzing Technologies.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Ruler strip -->
+<div class="ruler" aria-hidden="true"></div>
+
+<!-- ============ NAV ============ -->
+<header class="site-header">
+  <nav class="nav" aria-label="Primary">
+    <a href="#top" class="nav-mark">
+      <span class="nav-mark-code">HM—01</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about"><span class="nav-num">01</span>Profile</a></li>
+      <li><a href="#experience"><span class="nav-num">02</span>Experience</a></li>
+      <li><a href="#project"><span class="nav-num">03</span>Project</a></li>
+      <li><a href="#certifications"><span class="nav-num">04</span>Certifications</a></li>
+      <li><a href="#contact"><span class="nav-num">05</span>Contact</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO — SHEET 01 ============ -->
+  <section class="hero" id="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="sheet-label">SHEET 01 / PROFILE</p>
+        <h1 class="hero-name">Henry<br>Melvin</h1>
+        <p class="hero-tagline">Integrated Science &amp; Technology — Manufacturing Concentration</p>
+        <p class="hero-intro">
+          Student at James Madison University and Engineer Intern at Ryzing
+          Technologies, where I build servo-controlled systems and work the
+          full floor — CAD, CNC, mills, lathes, and industrial sewing.
+        </p>
+        <div class="hero-actions">
+          <a href="#project" class="btn btn-primary">View the Build</a>
+          <a href="Resume.pdf" class="btn btn-outline" download>Download Resume</a>
+        </div>
+      </div>
+
+      <div class="hero-diagram">
+        <!-- Signature element: animated schematic of the servo-driven
+             throttle control system — the actual mechanism Henry is
+             building at Ryzing Technologies -->
+        <svg viewBox="0 0 460 460" class="schematic" aria-hidden="true">
+          <defs>
+            <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--ink)"/>
+            </marker>
+          </defs>
+
+          <!-- base grid -->
+          <rect x="0" y="0" width="460" height="460" fill="none"/>
+
+          <!-- pivot base plate -->
+          <rect x="190" y="360" width="80" height="18" rx="2" stroke="var(--ink)" stroke-width="1.5" fill="none"/>
+
+          <!-- servo body -->
+          <rect x="205" y="300" width="50" height="60" rx="4" stroke="var(--blueprint)" stroke-width="2" fill="var(--paper)"/>
+          <text x="230" y="335" text-anchor="middle" class="label-mono">SERVO</text>
+
+          <!-- rotating throttle arm group -->
+          <g class="arm-group" style="transform-origin: 230px 300px;">
+            <line x1="230" y1="300" x2="230" y2="190" stroke="var(--safety)" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="230" cy="190" r="7" fill="var(--safety)"/>
+            <line x1="230" y1="190" x2="290" y2="150" stroke="var(--safety)" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="290" cy="150" r="6" fill="var(--ink)"/>
+          </g>
+
+          <!-- pivot point -->
+          <circle cx="230" cy="300" r="6" fill="var(--ink)"/>
+
+          <!-- angle arc -->
+          <path class="angle-arc" d="M 230 250 A 50 50 0 0 1 268 268" fill="none" stroke="var(--blueprint)" stroke-width="1.5" stroke-dasharray="3 4"/>
+          <text x="272" y="255" class="label-mono label-small">&#952;</text>
+
+          <!-- dimension leader lines -->
+          <line x1="255" y1="300" x2="340" y2="300" stroke="var(--ink)" stroke-width="1" marker-end="url(#arrow)"/>
+          <text x="345" y="304" class="label-mono label-small">THROTTLE ARM</text>
+
+          <line x1="205" y1="330" x2="120" y2="330" stroke="var(--ink)" stroke-width="1" marker-end="url(#arrow)"/>
+          <text x="20" y="334" class="label-mono label-small">CLEARPATH</text>
+
+          <line x1="290" y1="150" x2="360" y2="110" stroke="var(--ink)" stroke-width="1" marker-end="url(#arrow)"/>
+          <text x="300" y="98" class="label-mono label-small">WIND ENGINE</text>
+          <text x="300" y="112" class="label-mono label-small">THROTTLE PLATE</text>
+
+          <!-- rotating readout -->
+          <text x="230" y="430" text-anchor="middle" class="label-mono readout">
+            <tspan class="angle-readout">0&#176;</tspan> — ETC-01
+          </text>
+
+          <!-- corner scale note -->
+          <text x="16" y="440" class="label-mono label-small">SCALE N.T.S.</text>
+          <text x="380" y="440" class="label-mono label-small">REV A</text>
+        </svg>
+      </div>
+    </div>
+
+    <a href="#about" class="scroll-cue" aria-label="Scroll to Profile section">
+      <span class="scroll-cue-line"></span>
+      <span class="label-mono label-small">SCROLL</span>
+    </a>
+  </section>
+
+  <!-- ============ ABOUT — SHEET 02 ============ -->
+  <section class="section" id="about">
+    <div class="section-inner">
+      <p class="sheet-label">SHEET 02 / PROFILE</p>
+      <h2 class="section-title">Background</h2>
+
+      <div class="about-grid">
+        <div class="about-copy">
+          <div class="about-photo-wrap">
+            <img src="images/headshot.jpg" alt="Henry Melvin" class="about-photo">
+          </div>
+          <p>
+            I'm a rising junior at James Madison University studying Integrated
+            Science and Technology, with a concentration in Manufacturing and a
+            minor in Global Supply Chain Management. I'm interested in how
+            technology, manufacturing systems, and supply chain operations work
+            together to improve efficiency and solve real-world problems.
+          </p>
+          <p>
+            I'm currently an Engineer Intern at Ryzing Technologies in Staunton,
+            VA, contributing to textile and inflatable systems for Army and Navy
+            applications — everything from CAD modeling in Onshape to running
+            CNC machines, mills, lathes, and industrial sewing equipment on the
+            production floor.
+          </p>
+        </div>
+
+        <div class="spec-table">
+          <p class="spec-table-title">SKILLS &amp; TOLERANCES</p>
+          <ul class="spec-list">
+            <li><span class="spec-key">Engineering</span><span class="spec-leader"></span><span class="spec-val">Core</span></li>
+            <li><span class="spec-key">ROI Optimization</span><span class="spec-leader"></span><span class="spec-val">Core</span></li>
+            <li><span class="spec-key">Analog Circuit Design</span><span class="spec-leader"></span><span class="spec-val">Applied</span></li>
+            <li><span class="spec-key">CAD — Onshape</span><span class="spec-leader"></span><span class="spec-val">Certified</span></li>
+            <li><span class="spec-key">CNC / Mills / Lathes</span><span class="spec-leader"></span><span class="spec-val">Shop</span></li>
+            <li><span class="spec-key">Industrial Sewing</span><span class="spec-leader"></span><span class="spec-val">Shop</span></li>
+            <li><span class="spec-key">Servo &amp; Motor Control</span><span class="spec-leader"></span><span class="spec-val">Applied</span></li>
+            <li><span class="spec-key">Microsoft Office Suite</span><span class="spec-leader"></span><span class="spec-val">Certified</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EXPERIENCE — SHEET 03 ============ -->
+  <section class="section section-alt" id="experience">
+    <div class="section-inner">
+      <p class="sheet-label">SHEET 03 / EXPERIENCE</p>
+      <h2 class="section-title">Timeline</h2>
+
+      <div class="resume-download">
+        <p>Full resume, formatted as a downloadable PDF.</p>
+        <a href="Resume.pdf" class="btn btn-primary" download>Download Resume ↓</a>
+      </div>
+
+      <ol class="timeline">
+        <li class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <p class="timeline-date">May 2026 — Present</p>
+            <h3 class="timeline-title">Engineer Intern</h3>
+            <p class="timeline-org">Ryzing Technologies, Staunton, VA</p>
+            <p class="timeline-desc">
+              Assist in the design, development, and fabrication of textile and
+              inflatable systems for military-related Army and Navy applications,
+              including inflatable field hospitals and rescue sleds. Use Onshape
+              for engineering and design work, and operate CNC machines, mills,
+              lathes, and industrial sewing equipment in a production environment.
+            </p>
+          </div>
+        </li>
+        <li class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <p class="timeline-date">Pending May 2028</p>
+            <h3 class="timeline-title">B.S., Integrated Science and Technology</h3>
+            <p class="timeline-org">James Madison University — Concentration in Manufacturing, Minor in Global Supply Chain Management</p>
+            <p class="timeline-desc">Member of Phi Kappa Psi Fraternity.</p>
+          </div>
+        </li>
+        <li class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <p class="timeline-date">May 2022 — August 2025</p>
+            <h3 class="timeline-title">Lifeguard</h3>
+            <p class="timeline-org">Westside Swim Club, Staunton, VA</p>
+            <p class="timeline-desc">
+              Responded promptly to emergencies and provided first aid as needed.
+              Collaborated with team members to improve pool operations and
+              efficiency, and completed monthly training to stay current on
+              water rescue techniques.
+            </p>
+          </div>
+        </li>
+        <li class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <p class="timeline-date">High School</p>
+            <h3 class="timeline-title">Robert E. Lee High School &amp; Shenandoah Valley Governor's School</h3>
+            <p class="timeline-org">National Honors Society, Varsity Soccer, Track, AFA Cyber Patriot Competition</p>
+            <p class="timeline-desc">Balanced varsity athletics with academic honors and a cybersecurity competition team.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ PROJECT — SHEET 04 ============ -->
+  <section class="section" id="project">
+    <div class="section-inner">
+      <p class="sheet-label">SHEET 04 / PROJECT</p>
+      <h2 class="section-title">Current Build</h2>
+
+      <article class="project-card">
+        <div class="project-card-top">
+          <span class="project-stamp">IN PROGRESS</span>
+          <span class="label-mono label-small">DWG NO. ETC-01</span>
+        </div>
+        <h3 class="project-title">Electronic Throttle Control System</h3>
+        <p class="project-desc">
+          Built during my internship at Ryzing Technologies — a servo-driven
+          throttle control system for a wind engine, developed for
+          military-related testing. A servo motor drives precise throttle
+          positioning, with work ongoing on motion profiling and real-time
+          status feedback. Still in development — more detail and results to
+          come as it's completed.
+        </p>
+        <ul class="project-tags">
+          <li>Servo Control</li>
+          <li>Embedded Systems</li>
+          <li>Military Testing</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ CERTIFICATIONS — SHEET 05 ============ -->
+  <section class="section section-alt" id="certifications">
+    <div class="section-inner">
+      <p class="sheet-label">SHEET 05 / CERTIFICATIONS</p>
+      <h2 class="section-title">Inspection Record</h2>
+
+      <div class="stamp-grid">
+        <a href="https://www.coursera.org/account/accomplishments/specialization/certificate/Z6HR36GN5Q0J" class="stamp" target="_blank" rel="noopener">
+          <span class="stamp-ring"></span>
+          <span class="stamp-name">Microsoft 365 Fundamentals</span>
+          <span class="stamp-issuer">Microsoft</span>
+        </a>
+        <a href="https://www.coursera.org/account/accomplishments/verify/J43QSC4F2TE9" class="stamp" target="_blank" rel="noopener">
+          <span class="stamp-ring"></span>
+          <span class="stamp-name">Accelerate Job Search w/ AI</span>
+          <span class="stamp-issuer">Google · 2025</span>
+        </a>
+        <a href="https://www.coursera.org/account/accomplishments/verify/496YHGNSSS4T" class="stamp" target="_blank" rel="noopener">
+          <span class="stamp-ring"></span>
+          <span class="stamp-name">Work Smarter: Excel</span>
+          <span class="stamp-issuer">Microsoft · 2025</span>
+        </a>
+        <a href="https://www.coursera.org/account/accomplishments/verify/EVYEM2WPS5MF" class="stamp" target="_blank" rel="noopener">
+          <span class="stamp-ring"></span>
+          <span class="stamp-name">Work Smarter: PowerPoint</span>
+          <span class="stamp-issuer">Microsoft · 2025</span>
+        </a>
+        <a href="https://www.coursera.org/account/accomplishments/verify/BBJ6FHI0D4O1" class="stamp" target="_blank" rel="noopener">
+          <span class="stamp-ring"></span>
+          <span class="stamp-name">Work Smarter: Word</span>
+          <span class="stamp-issuer">Microsoft · 2025</span>
+        </a>
+        <a href="https://www.coursera.org/account/accomplishments/professional-cert/certificate/1TM7194JJ38K" class="stamp" target="_blank" rel="noopener">
+          <span class="stamp-ring"></span>
+          <span class="stamp-name">Project Management</span>
+          <span class="stamp-issuer">Google</span>
+        </a>
+        <a href="https://www.coursera.org/account/accomplishments/verify/FJUBJE7NJ1FX" class="stamp" target="_blank" rel="noopener">
+          <span class="stamp-ring"></span>
+          <span class="stamp-name">Data, Data, Everywhere</span>
+          <span class="stamp-issuer">Google · 2026</span>
+        </a>
+        <a href="https://ti-user-certificates.s3.amazonaws.com/6e557ed6-d03d-4c48-9492-4d18d145d7a1/d7120f61-72c7-4c0f-9478-cac118956c7a-henry-melvin-d677522e-647f-4c1e-ba1c-b41c1d6c0a59-certificate.pdf" class="stamp" target="_blank" rel="noopener">
+          <span class="stamp-ring"></span>
+          <span class="stamp-name">Intro to Sketching</span>
+          <span class="stamp-issuer">Onshape</span>
+        </a>
+        <a href="https://ti-user-certificates.s3.amazonaws.com/6e557ed6-d03d-4c48-9492-4d18d145d7a1/d7120f61-72c7-4c0f-9478-cac118956c7a-henry-melvin-ac12808f-e899-4eaf-8483-b6a6b0a27ba4-certificate.pdf" class="stamp" target="_blank" rel="noopener">
+          <span class="stamp-ring"></span>
+          <span class="stamp-name">Intro to Part Studios</span>
+          <span class="stamp-issuer">Onshape</span>
+        </a>
+        <a href="https://ti-user-certificates.s3.amazonaws.com/6e557ed6-d03d-4c48-9492-4d18d145d7a1/d7120f61-72c7-4c0f-9478-cac118956c7a-henry-melvin-9518e26c-d321-4dc8-8db9-151d38dc6939-certificate.pdf" class="stamp" target="_blank" rel="noopener">
+          <span class="stamp-ring"></span>
+          <span class="stamp-name">Intro to Assemblies</span>
+          <span class="stamp-issuer">Onshape · 2026</span>
+        </a>
+        <a href="https://ti-user-certificates.s3.amazonaws.com/6e557ed6-d03d-4c48-9492-4d18d145d7a1/d7120f61-72c7-4c0f-9478-cac118956c7a-henry-melvin-0edfade4-605b-42ae-ae95-cc66399417c2-certificate.pdf" class="stamp" target="_blank" rel="noopener">
+          <span class="stamp-ring"></span>
+          <span class="stamp-name">Intro to 2D Drawings</span>
+          <span class="stamp-issuer">Onshape · 2026</span>
+        </a>
+        <a href="https://ti-user-certificates.s3.amazonaws.com/6e557ed6-d03d-4c48-9492-4d18d145d7a1/d7120f61-72c7-4c0f-9478-cac118956c7a-henry-melvin-343dd4f6-e626-465e-8b62-fa46ca46cb36-certificate.pdf" class="stamp" target="_blank" rel="noopener">
+          <span class="stamp-ring"></span>
+          <span class="stamp-name">Direct Editing</span>
+          <span class="stamp-issuer">Onshape · 2026</span>
+        </a>
+        <a href="https://ti-user-certificates.s3.amazonaws.com/6e557ed6-d03d-4c48-9492-4d18d145d7a1/d7120f61-72c7-4c0f-9478-cac118956c7a-henry-melvin-43042ac5-33f4-4f4f-a3a9-99dc5bb21051-certificate.pdf" class="stamp" target="_blank" rel="noopener">
+          <span class="stamp-ring"></span>
+          <span class="stamp-name">Understanding Curves</span>
+          <span class="stamp-issuer">Onshape</span>
+        </a>
+        <div class="stamp stamp--static">
+          <span class="stamp-ring"></span>
+          <span class="stamp-name">Controlled Unclassified Info</span>
+          <span class="stamp-issuer">Dept. of War · 2026</span>
+        </div>
+        <div class="stamp stamp--static">
+          <span class="stamp-ring"></span>
+          <span class="stamp-name">Lifeguarding / CPR / AED</span>
+          <span class="stamp-issuer">Professional Rescuer</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT — SHEET 06 ============ -->
+  <section class="section" id="contact">
+    <div class="section-inner">
+      <p class="sheet-label">SHEET 06 / CONTACT</p>
+      <h2 class="section-title">Let's Build Something</h2>
+
+      <div class="title-block">
+        <div class="title-block-row">
+          <span class="title-block-label">NAME</span>
+          <span class="title-block-value">Henry Melvin</span>
+        </div>
+        <div class="title-block-row">
+          <span class="title-block-label">EMAIL</span>
+          <a class="title-block-value title-block-link" href="mailto:wmhenrymelvin@gmail.com">wmhenrymelvin@gmail.com</a>
+        </div>
+        <div class="title-block-row">
+          <span class="title-block-label">PHONE</span>
+          <a class="title-block-value title-block-link" href="tel:+15406888237">(540) 688-8237</a>
+        </div>
+        <div class="title-block-row">
+          <span class="title-block-label">LINKEDIN</span>
+          <a class="title-block-value title-block-link" href="https://linkedin.com/in/william-melvin-b56901348" target="_blank" rel="noopener">linkedin.com/in/william-melvin</a>
+        </div>
+        <div class="title-block-row">
+          <span class="title-block-label">GITHUB</span>
+          <a class="title-block-value title-block-link" href="https://github.com/yourusername" target="_blank" rel="noopener">github.com/yourusername</a>
+        </div>
+        <div class="title-block-row title-block-row--footer">
+          <span class="title-block-label">SHEET</span>
+          <span class="title-block-value">06 OF 06 · REV A</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p class="label-mono label-small">&copy; <span id="year"></span> HENRY MELVIN — ALL RIGHTS RESERVED</p>
+    <a href="#top" class="back-to-top label-mono label-small">BACK TO TOP ↑</a>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
