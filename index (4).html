@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Henry Melvin | Portfolio</title>
+<meta name="description" content="Henry Melvin — Integrated Science and Technology student at James Madison University, Engineer Intern at Ryzing Technologies.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ============ HEADER ============ -->
+  <header class="profile-header">
+    <!-- 🔧 UPDATE: swap images/headshot.jpg for your own photo if you want a different one -->
+    <img src="images/headshot.jpg" alt="Henry Melvin" class="profile-photo">
+
+    <div class="profile-info">
+      <h1 class="profile-name">Henry Melvin</h1>
+      <p class="profile-tagline">Integrated Science &amp; Technology · Manufacturing Concentration</p>
+
+      <div class="profile-links">
+        <a href="mailto:wmhenrymelvin@gmail.com" class="profile-link">Email</a>
+        <a href="tel:+15406888237" class="profile-link">Phone</a>
+        <a href="https://linkedin.com/in/william-melvin-b56901348" class="profile-link" target="_blank" rel="noopener">LinkedIn</a>
+        <!-- 🔧 UPDATE: replace with your real GitHub profile URL -->
+        <a href="https://github.com/yourusername" class="profile-link" target="_blank" rel="noopener">GitHub</a>
+        <!-- 🔧 UPDATE: swap Resume.pdf for a newer version whenever you update your resume -->
+        <a href="Resume.pdf" class="profile-link profile-link--accent" download>Resume ↓</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ TAB NAV ============ -->
+  <nav class="tabs" aria-label="Portfolio sections">
+    <button class="tab-btn is-active" data-tab="summary" type="button">Summary</button>
+    <button class="tab-btn" data-tab="skills" type="button">Skills</button>
+    <button class="tab-btn" data-tab="projects" type="button">Projects</button>
+    <button class="tab-btn" data-tab="experience" type="button">Experience</button>
+    <span class="tab-indicator" aria-hidden="true"></span>
+  </nav>
+
+  <!-- ============ TAB PANELS ============ -->
+  <main class="tab-panels">
+
+    <!-- ---------- SUMMARY ---------- -->
+    <section class="tab-panel is-active" id="summary" role="tabpanel">
+      <!-- 🔧 UPDATE: this is your bio — rewrite in your own words any time -->
+      <p>
+        I'm a rising junior at James Madison University studying Integrated
+        Science and Technology, with a concentration in Manufacturing and a
+        minor in Global Supply Chain Management. I'm interested in how
+        technology, manufacturing systems, and supply chain operations work
+        together to improve efficiency and solve real-world problems.
+      </p>
+      <p>
+        I'm currently an Engineer Intern at Ryzing Technologies in Staunton,
+        VA, contributing to textile and inflatable systems for Army and Navy
+        applications — everything from CAD modeling in Onshape to running
+        CNC machines, mills, lathes, and industrial sewing equipment on the
+        production floor.
+      </p>
+      <p>
+        I enjoy hands-on learning and working on projects that connect
+        classroom knowledge to real industry applications, and I'm always
+        looking for opportunities to learn from professionals in
+        manufacturing, operations, and process improvement.
+      </p>
+    </section>
+
+    <!-- ---------- SKILLS ---------- -->
+    <section class="tab-panel" id="skills" role="tabpanel">
+      <h2 class="panel-heading">Skills</h2>
+      <!-- 🔧 UPDATE: add, remove, or reorder skill tags freely -->
+      <ul class="skill-tags">
+        <li>Engineering</li>
+        <li>ROI Optimization</li>
+        <li>Analog Circuit Design</li>
+        <li>CAD — Onshape</li>
+        <li>CNC / Mills / Lathes</li>
+        <li>Industrial Sewing</li>
+        <li>Servo &amp; Motor Control</li>
+        <li>Microsoft Office Suite</li>
+      </ul>
+
+      <h2 class="panel-heading panel-heading--spaced">Certifications</h2>
+      <!-- Certifications render from the CERTIFICATIONS array in script.js —
+           add a new { name, issuer, url } object there to add a card here. -->
+      <div class="cert-grid" id="certGrid"></div>
+    </section>
+
+    <!-- ---------- PROJECTS ---------- -->
+    <section class="tab-panel" id="projects" role="tabpanel">
+      <h2 class="panel-heading">Projects</h2>
+      <p class="panel-subtext">Click a project to see the full write-up.</p>
+      <!-- Projects render from the PROJECTS array in script.js —
+           add a new project object there and a card + modal appear
+           here automatically. No HTML editing needed. -->
+      <div class="project-grid" id="projectGrid"></div>
+    </section>
+
+    <!-- ---------- EXPERIENCE ---------- -->
+    <section class="tab-panel" id="experience" role="tabpanel">
+      <h2 class="panel-heading">Experience</h2>
+      <!-- 🔧 UPDATE: edit dates, titles, and descriptions as your experience changes -->
+      <ol class="timeline">
+        <li class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-body">
+            <p class="timeline-date">May 2026 — Present</p>
+            <h3 class="timeline-title">Engineer Intern</h3>
+            <p class="timeline-org">Ryzing Technologies, Staunton, VA</p>
+            <p class="timeline-desc">
+              Assist in the design, development, and fabrication of textile and
+              inflatable systems for military-related Army and Navy
+              applications, including inflatable field hospitals and rescue
+              sleds. Use Onshape for engineering and design work, and operate
+              CNC machines, mills, lathes, and industrial sewing equipment.
+            </p>
+          </div>
+        </li>
+        <li class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-body">
+            <p class="timeline-date">Pending May 2028</p>
+            <h3 class="timeline-title">B.S., Integrated Science and Technology</h3>
+            <p class="timeline-org">James Madison University — Manufacturing Concentration, Global Supply Chain Management Minor</p>
+            <p class="timeline-desc">Member of Phi Kappa Psi Fraternity.</p>
+          </div>
+        </li>
+        <li class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-body">
+            <p class="timeline-date">May 2022 — August 2025</p>
+            <h3 class="timeline-title">Lifeguard</h3>
+            <p class="timeline-org">Westside Swim Club, Staunton, VA</p>
+            <p class="timeline-desc">
+              Responded promptly to emergencies and provided first aid as
+              needed. Collaborated with the team to improve pool operations
+              and completed monthly training on water rescue techniques.
+            </p>
+          </div>
+        </li>
+        <li class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-body">
+            <p class="timeline-date">High School</p>
+            <h3 class="timeline-title">Robert E. Lee High School &amp; Shenandoah Valley Governor's School</h3>
+            <p class="timeline-org">National Honors Society, Varsity Soccer, Track, AFA Cyber Patriot Competition</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+  </main>
+
+  <footer class="page-footer">
+    <p>&copy; <span id="year"></span> Henry Melvin</p>
+  </footer>
+
+</div>
+
+<!-- ============ PROJECT DETAIL MODAL ============ -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" id="modalClose" aria-label="Close project details">✕</button>
+    <span class="modal-status" id="modalStatus"></span>
+    <h3 class="modal-title" id="modalTitle"></h3>
+    <p class="modal-desc" id="modalDesc"></p>
+    <ul class="modal-tags" id="modalTags"></ul>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
