@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Henry Melvin | Portfolio</title>
+<meta name="description" content="Henry Melvin — Integrated Science and Technology student at James Madison University, Engineer Intern at Ryzing Technologies.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css?v=6">
+</head>
+<body>
+
+<!-- Decorative background blobs -->
+<div class="bg-decor" aria-hidden="true">
+  <span class="blob blob--teal"></span>
+  <span class="blob blob--amber"></span>
+</div>
+
+<!-- ============ STICKY NAV ============ -->
+<nav class="tabs" aria-label="Page sections">
+  <div class="tabs-inner">
+    <a href="#top" class="nav-mark">HM</a>
+    <div class="tab-group">
+      <a class="tab-btn is-active" data-section="summary" href="#summary">Summary</a>
+      <a class="tab-btn" data-section="projects" href="#projects">Projects</a>
+      <a class="tab-btn" data-section="skills" href="#skills">Skills</a>
+      <a class="tab-btn" data-section="experience" href="#experience">Experience</a>
+      <a class="tab-btn" data-section="why-isat" href="#why-isat">Why ISAT</a>
+      <span class="tab-indicator" aria-hidden="true"></span>
+    </div>
+    <span class="nav-spacer" aria-hidden="true"></span>
+  </div>
+</nav>
+
+<div class="page" id="top">
+
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <!-- 🔧 UPDATE: swap images/headshot.jpg for your own photo if you want a different one.
+         If the photo doesn't show once this is live on GitHub Pages, the almost-always
+         cause is the images/ folder not actually being uploaded as a folder — see the
+         note below the file list for exact steps. -->
+    <div class="hero-photo-wrap">
+      <img src="images/headshot.jpg" alt="Henry Melvin" class="hero-photo"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="hero-photo-fallback">HM</div>
+    </div>
+
+    <div class="hero-copy">
+      <p class="eyebrow">Portfolio</p>
+      <h1 class="hero-name">Henry Melvin</h1>
+      <p class="hero-tagline">Integrated Science &amp; Technology</p>
+
+      <div class="hero-links">
+        <a href="mailto:wmhenrymelvin@gmail.com" class="pill-link">Email</a>
+        <a href="tel:+15406888237" class="pill-link">Phone</a>
+        <a href="https://linkedin.com/in/william-melvin-b56901348" class="pill-link" target="_blank" rel="noopener">LinkedIn</a>
+        <!-- 🔧 UPDATE: replace with your real GitHub profile URL -->
+        <a href="https://github.com/yourusername" class="pill-link" target="_blank" rel="noopener">GitHub</a>
+        <!-- 🔧 UPDATE: swap Resume.pdf for a newer version whenever you update your resume -->
+        <a href="Resume.pdf" class="pill-link pill-link--accent" download>Resume ↓</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ SUMMARY ============ -->
+  <section class="section" id="summary">
+    <h2 class="section-title">Summary</h2>
+    <div class="summary-grid">
+      <div class="summary-copy">
+        <!-- 🔧 UPDATE: this is your bio — rewrite in your own words any time -->
+        <p>
+          I am a sophomore at James Madison University studying Integrated
+          Science and Technology, with a concentration in Manufacturing and a
+          minor in Global Supply Chain Management. I am interested in learning
+          how technology, manufacturing systems, and supply chain operations
+          work together to improve efficiency, solve real-world problems, and
+          support business growth.
+        </p>
+        <p>
+          Through my coursework, I have gained experience with
+          problem-solving, engineering, programming, energy systems,
+          manufacturing concepts, and technical communication. I enjoy
+          hands-on learning and working on projects that connect classroom
+          knowledge to real industry applications.
+        </p>
+        <p>
+          I am excited to continue building my skills through internship
+          experiences, team-based projects, and opportunities where I can
+          learn from professionals in the field. I am especially interested
+          in roles that allow me to contribute, ask questions, and grow in
+          areas related to manufacturing, engineering, operations,
+          technology, and process improvement.
+        </p>
+      </div>
+
+      <aside class="highlight-card">
+        <p class="highlight-card-title">At a glance</p>
+        <ul class="highlight-list">
+          <li>
+            <span class="highlight-label">University</span>
+            <span class="highlight-value">James Madison University</span>
+          </li>
+          <li>
+            <span class="highlight-label">Focus</span>
+            <span class="highlight-value">Integrated Science &amp; Technology</span>
+          </li>
+          <li>
+            <span class="highlight-label">Currently</span>
+            <span class="highlight-value">Student, James Madison University</span>
+          </li>
+          <li>
+            <span class="highlight-label">Based in</span>
+            <span class="highlight-value">Staunton, Virginia</span>
+          </li>
+          <li>
+            <span class="highlight-label">Graduating</span>
+            <span class="highlight-value">May 2028</span>
+          </li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section class="section" id="projects">
+    <h2 class="section-title">Projects</h2>
+    <p class="section-subtext">Click a project to see the full write-up.</p>
+    <!-- Projects render from the PROJECTS array in script.js —
+         add a new project object there and a card + modal appear
+         here automatically. No HTML editing needed. -->
+    <div class="project-grid" id="projectGrid"></div>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section class="section" id="skills">
+    <h2 class="section-title">Skills</h2>
+
+    <!-- 🔧 UPDATE: add, remove, or reorder skill cards freely -->
+    <div class="skill-grid">
+      <div class="skill-card">Creative Problem Solving</div>
+      <div class="skill-card">Project Management</div>
+      <div class="skill-card">CAD</div>
+      <div class="skill-card">Communication &amp; Leadership</div>
+      <div class="skill-card">Microsoft Word</div>
+      <div class="skill-card">Microsoft Excel</div>
+      <div class="skill-card">Microsoft PowerPoint</div>
+    </div>
+
+    <h2 class="section-title section-title--spaced">Certifications</h2>
+    <!-- Certifications render from the CERTIFICATIONS array in script.js —
+         add a new { name, url } object there to add a card here. -->
+    <div class="cert-grid" id="certGrid"></div>
+  </section>
+
+  <!-- ============ EXPERIENCE ============ -->
+  <section class="section" id="experience">
+    <h2 class="section-title">Experience</h2>
+
+    <!-- 🔧 UPDATE: edit dates, titles, and descriptions as your experience changes -->
+    <ol class="timeline">
+      <li class="timeline-item">
+        <div class="timeline-dot timeline-dot--work"></div>
+        <div class="timeline-body">
+          <p class="timeline-date">May 2026 — Present</p>
+          <h3 class="timeline-title">Engineer Intern</h3>
+          <p class="timeline-org">Ryzing Technologies, Staunton, VA</p>
+          <p class="timeline-desc">
+            Assist in the design, development, and fabrication of textile and
+            inflatable systems for military-related Army and Navy
+            applications, including inflatable field hospitals and rescue
+            sleds. Use CAD software for engineering and design work, and
+            operate CNC machines, mills, lathes, and industrial sewing
+            equipment in a fast-paced production environment.
+          </p>
+        </div>
+      </li>
+      <li class="timeline-item">
+        <div class="timeline-dot timeline-dot--edu"></div>
+        <div class="timeline-body">
+          <p class="timeline-date">2024 – 2028</p>
+          <h3 class="timeline-title">B.S., Integrated Science and Technology</h3>
+          <p class="timeline-org">James Madison University — Manufacturing Concentration, Global Supply Chain Management Minor</p>
+          <p class="timeline-desc">Member of Phi Kappa Psi Fraternity.</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ============ WHY ISAT ============ -->
+  <section class="section" id="why-isat">
+    <h2 class="section-title">Why ISAT</h2>
+
+    <div class="isat-grid">
+      <div class="isat-block">
+        <h3 class="isat-block-title">What the major is</h3>
+        <p>
+          Integrated Science and Technology (ISAT) is James Madison
+          University's B.S. program built around solving real-world problems
+          rather than staying inside one traditional science discipline.
+          Instead of specializing narrowly from day one, ISAT students build
+          a broad foundation across the basic sciences alongside technology,
+          computing, and problem-solving skills, then apply all of it
+          together to practical, often messy, real-world challenges.
+        </p>
+        <p>
+          A defining piece of the curriculum is its "holistic problem-solving"
+          course sequence, developed over all four years, which trains
+          students to think in systems — technical, institutional, cultural,
+          and natural — rather than relying on the narrower toolkit of a
+          single discipline. The program is ABET-accredited in applied
+          science and lets students tailor a concentration (in my case,
+          Manufacturing) to fit their own interests.
+        </p>
+      </div>
+
+      <!-- 🔧 UPDATE: this is your own take — rewrite in your own words any time -->
+      <div class="isat-block">
+        <h3 class="isat-block-title">Why I chose it</h3>
+        <p>
+          When I started at JMU, I hadn't settled on one discipline yet.
+          ISAT appealed to me because it let me explore a few different
+          majors before committing to a concentration in my junior year,
+          rather than locking into a single path from day one. It's also a
+          noticeably more hands-on program than most, and it sits within
+          the College of Integrated Science and Engineering — squarely in
+          the space I want to build a career in.
+        </p>
+      </div>
+
+      <!-- 🔧 UPDATE: this is your own take — rewrite in your own words any time -->
+      <div class="isat-block">
+        <h3 class="isat-block-title">Skills it's given me</h3>
+        <p>
+          JMU's ISAT program builds a broad foundation of scientific and
+          technical skills, then lets you customize that foundation through
+          a concentration — mine being Manufacturing, alongside options
+          like biotechnology, applied computing, energy, and environment
+          for other students in the program. The core of it is
+          multidisciplinary problem-solving: connecting complex technical
+          concepts across disciplines rather than staying siloed in one.
+          Along with that, it's built up my data analysis and project
+          management skills, and my ability to think through how a
+          technical decision connects to broader societal and ethical
+          considerations, not just the engineering itself.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="page-footer">
+    <p>&copy; <span id="year"></span> Henry Melvin</p>
+  </footer>
+
+</div>
+
+<!-- ============ PROJECT DETAIL MODAL ============ -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" role="dialog" aria-modal="true" aria-label="Project photo">
+    <button class="modal-close" id="modalClose" aria-label="Close project details">✕</button>
+
+    <div class="step-viewer" id="modalStepViewer">
+      <h4 class="step-viewer-title" id="modalStepTitle"></h4>
+      <img class="step-viewer-image" id="modalStepImage" alt="">
+      <video class="step-viewer-image" id="modalStepVideo" controls playsinline></video>
+      <div class="step-viewer-body">
+        <p class="step-viewer-desc" id="modalStepDesc"></p>
+        <div class="step-viewer-table" id="modalStepTable"></div>
+      </div>
+      <div class="step-viewer-controls">
+        <button type="button" class="step-nav-btn" id="modalStepPrev" aria-label="Previous step">←</button>
+        <div class="step-dots" id="modalStepDots"></div>
+        <button type="button" class="step-nav-btn" id="modalStepNext" aria-label="Next step">→</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="script.js?v=6"></script>
+</body>
+</html>
