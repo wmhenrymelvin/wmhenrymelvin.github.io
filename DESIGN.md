@@ -35,10 +35,12 @@ unmotivated decoration, not signal.
   gray. (`--ink-faint` was `#8A929C` in an earlier pass — measured at 3.15:1
   against white, which fails WCAG AA's 4.5:1 for the small text it's used
   in; darkened to clear 4.5:1.)
-- `--accent` `#2458C9` / `--accent-bright` `#4C86FF` / `--accent-dim`
-  `#E5EDFB` — the one deliberate "on/active" color: nav indicator, active
-  switch, links, tags, focus rings, the annunciator badge. Verified at
-  6.3:1 against white at the sizes it's used in.
+- `--accent` `#0E7A87` / `--accent-bright` `#22B8C4` / `--accent-dim`
+  `#E1F3F4` — the one deliberate "on/active" color: nav indicator, active
+  switch, links, tags, focus rings. Was a blue in an earlier pass; changed
+  to teal on request, and teal has the added benefit of never being
+  confusable with the grade table's green/amber/red. Verified at 5.1:1
+  against white at the sizes it's used in.
 - `--signal-green` / `--signal-amber-bright` / `--signal-red` — scoped to
   exactly one place now: the bike-fit grade table's pass/watch/fail dots.
   Not used anywhere else, so on the rare page where it appears it actually
@@ -58,10 +60,10 @@ room — the brief's own call, not a default.
   now, title case throughout.
 - **Archivo** (400–700) — body copy and UI text.
 - **Martian Mono** (weight 600) — small UI-chrome labels specifically: nav
-  switches, the annunciator badge, readout labels, project tags, the grade
-  table's header row, experience dates. Everything that carries `--accent`
-  blue, basically. Picked for character at small sizes without reaching
-  for JetBrains Mono or IBM Plex Mono, both flagged as overused defaults.
+  switches, readout labels, project tags, the grade table's header row,
+  experience dates. Everything that carries `--accent` color, basically.
+  Picked for character at small sizes without reaching for JetBrains Mono
+  or IBM Plex Mono, both flagged as overused defaults.
 - **JetBrains Mono** (400–600) — reserved for the one place letterform
   quirks actually hurt: the Python code blocks in the data-analytics
   modals. Kept plain and highly legible there on purpose, distinct from
@@ -82,10 +84,19 @@ Licensed OFL via Google Fonts.
 - **`.plate`** — the base module unit (hero, every section, why-ISAT
   blocks). Bezeled border, two corner rivet dots (`::before`/`::after`),
   soft real shadow (offset + blur).
+- **Hero** — reduced to photo, name, and the link buttons. Earlier passes
+  had a tagline line ("Integrated Science & Technology — James Madison
+  University") and a lit "Seeking Summer 2027..." annunciator badge under
+  the name; both removed on request, so `.hero-links` now carries its own
+  `margin-top` instead of relying on the removed elements' bottom margins
+  for spacing.
 - **`.switchboard` / `.switch`** — nav is centered (`grid-template-columns:
   1fr auto 1fr`) with an animated `.nav-indicator` bar that slides and
   resizes under the active switch, driven by scroll-spy / click-to-scroll
-  in `script.js`'s `moveIndicator()`. The indicator animates via
+  in `script.js`'s `moveIndicator()`. Each switch had its own small lamp
+  dot (`.switch-lamp`) in an earlier pass; removed on request, so the
+  active state now reads from the indicator bar plus the switch's own
+  border/background color alone. The indicator animates via
   `transform: translateX() scaleX()` against a fixed 1px base width, not
   by transitioning `width` directly — the detector flags animated layout
   properties (width/height/padding/margin) as layout-thrash, and this

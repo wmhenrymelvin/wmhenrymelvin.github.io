@@ -60,11 +60,13 @@
   --ink-faint: #6C7580;
 
   /* Accent — the one deliberate "on/active" color: nav, links, focus
-     rings, tags. A single confident blue instead of scattering a
-     status-lamp green across UI chrome that isn't reporting status. */
-  --accent: #2458C9;
-  --accent-bright: #4C86FF;
-  --accent-dim: #E5EDFB;
+     rings, tags. A single confident color instead of scattering a
+     status-lamp green across UI chrome that isn't reporting status.
+     Teal rather than blue or amber/green/red - distinct from every
+     grade-table status color so it never gets misread as a status. */
+  --accent: #0E7A87;
+  --accent-bright: #22B8C4;
+  --accent-dim: #E1F3F4;
 
   /* Signal colors — scoped to one real use: the bike-fit grade table's
      pass/watch/fail dots. Not used anywhere else on the site. */
@@ -208,23 +210,11 @@ a:focus-visible, button:focus-visible {
   white-space: nowrap;
   transition: color 0.15s var(--ease), border-color 0.15s var(--ease), background 0.15s var(--ease);
 }
-.switch-lamp {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--ink-faint);
-  flex-shrink: 0;
-  transition: background 0.15s var(--ease), box-shadow 0.15s var(--ease);
-}
 .switch:hover { color: var(--ink-soft); border-color: var(--ink-faint); }
 .switch.is-active {
   color: var(--accent);
   border-color: var(--accent);
   background: var(--accent-dim);
-}
-.switch.is-active .switch-lamp {
-  background: var(--accent-bright);
-  box-shadow: 0 0 6px 1px var(--accent-bright);
 }
 
 .nav-indicator {
@@ -329,52 +319,12 @@ section.plate:first-of-type { margin-top: 0; }
 
 .plate-name {
   font-size: clamp(2.6rem, 5.5vw, 4rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  letter-spacing: -0.01em;
   line-height: 1.05;
 }
 
-.hero-tagline {
-  color: var(--ink-soft);
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  letter-spacing: 0.02em;
-  margin: 0.85rem 0 1.5rem;
-}
-
-.annunciator {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-family: var(--font-label);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: var(--accent);
-  background: var(--accent-dim);
-  border: 1px solid var(--accent);
-  border-radius: var(--radius);
-  padding: 0.55rem 1rem 0.55rem 0.8rem;
-  margin: 0 0 1.6rem;
-}
-
-.annunciator-lamp {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--accent-bright);
-  box-shadow: 0 0 7px 1.5px var(--accent-bright);
-  flex-shrink: 0;
-  animation: lamp-pulse 2.4s ease-in-out infinite;
-}
-
-@keyframes lamp-pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.45; }
-}
-
-.hero-links { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+.hero-links { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 1.75rem; }
 
 .switch-btn {
   display: inline-flex;
@@ -902,7 +852,6 @@ video.step-viewer-image {
 @media (max-width: 720px) {
   .hero { flex-direction: column; text-align: center; gap: 1.75rem; }
   .hero-links { justify-content: center; }
-  .annunciator { margin-left: auto; margin-right: auto; }
 }
 
 @media (max-width: 480px) {
