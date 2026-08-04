@@ -831,15 +831,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let isClickScrolling = false;
   let clickScrollTimeout = null;
+  let activeSectionId = null;
+  let indicatorFrame = null;
 
   function moveIndicator(btn) {
     if (!btn || !navIndicator) return;
-    // transform-only (translate + scale) instead of animating width,
-    // so this never triggers a layout reflow mid-transition.
-    navIndicator.style.transform = `translateX(${btn.offsetLeft}px) scaleX(${btn.offsetWidth})`;
+    // Read the layout values and write the transform inside the same
+    // animation frame, batched via rAF, so a burst of setActive() calls
+    // (e.g. the observer flickering between two sections right at the
+    // bottom of the page) can't force a synchronous layout read on
+    // every call while the user is mid-scroll.
+    if (indicatorFrame) cancelAnimationFrame(indicatorFrame);
+    indicatorFrame = requestAnimationFrame(() => {
+      navIndicator.style.transform = `translateX(${btn.offsetLeft}px) scaleX(${btn.offsetWidth})`;
+      indicatorFrame = null;
+    });
   }
 
   function setActive(id) {
+    if (id === activeSectionId) return;
+    activeSectionId = id;
     switchButtons.forEach(b => {
       b.classList.toggle('is-active', b.dataset.section === id);
     });
@@ -882,6 +893,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     sections.forEach(section => observer.observe(section));
   }
+
+  // The last section is often shorter than the rootMargin band above, so
+  // it can never cleanly satisfy it - right at the bottom of the page the
+  // observer has nothing stable to land on and can flicker between the
+  // last two sections on every tiny scroll adjustment. Once the page is
+  // within a few pixels of its true bottom, just force the last section
+  // active and skip the observer's math entirely.
+  let bottomCheckFrame = null;
+  window.addEventListener('scroll', () => {
+    if (bottomCheckFrame) return;
+    bottomCheckFrame = requestAnimationFrame(() => {
+      bottomCheckFrame = null;
+      if (isClickScrolling || !sections.length) return;
+      const atBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2;
+      if (atBottom) setActive(sections[sections.length - 1].id);
+    });
+  }, { passive: true });
 
   // Keep the indicator aligned through font load, resize, and wrap changes.
   window.addEventListener('load', () => moveIndicator(document.querySelector('.switch.is-active')));

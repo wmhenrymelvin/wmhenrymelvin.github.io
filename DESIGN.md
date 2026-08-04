@@ -49,22 +49,31 @@ room — the brief's own call, not a default.
 
 ## Type
 
-- **Bricolage Grotesque** (weights 600–800) — headings, nav switches, project
-  and section titles. Replaces an earlier pass's Oswald: review called
-  Oswald's condensed, tightly-tracked, all-caps treatment "robotic," so the
-  face changed and the treatment did too — big display text (hero name,
-  section headers, project/experience titles) dropped `text-transform:
-  uppercase` entirely; only small mono labels (nav pills, tags, the
-  annunciator badge) keep it, where all-caps reads as a label convention
-  rather than a display voice.
+- **Oswald** (weights 500–700) — headings, project/experience/section
+  titles. A middle pass swapped this for Bricolage Grotesque when Oswald's
+  all-caps tracking read as "robotic"; the follow-up review kept Oswald
+  itself (reverted on request) but dropped the all-caps treatment that
+  actually caused the complaint — big display text (hero name, section
+  headers, project/experience titles) has no `text-transform: uppercase`
+  now, title case throughout.
 - **Archivo** (400–700) — body copy and UI text.
-- **JetBrains Mono** (400–600) — data labels, code blocks, small caps
-  micro-copy (readout labels, tags, footer). Every value in the At a Glance
-  panel, including the graduation date, stays in the normal readout type —
-  no seven-segment/digital face; an earlier draft tried one and it was
-  correctly called out as an unnecessary flourish.
+- **Martian Mono** (weight 600) — small UI-chrome labels specifically: nav
+  switches, the annunciator badge, readout labels, project tags, the grade
+  table's header row, experience dates. Everything that carries `--accent`
+  blue, basically. Picked for character at small sizes without reaching
+  for JetBrains Mono or IBM Plex Mono, both flagged as overused defaults.
+- **JetBrains Mono** (400–600) — reserved for the one place letterform
+  quirks actually hurt: the Python code blocks in the data-analytics
+  modals. Kept plain and highly legible there on purpose, distinct from
+  Martian Mono's role.
+- Every value in the At a Glance panel, including the graduation date,
+  stays in normal type — no seven-segment/digital face; an earlier draft
+  tried one and it was correctly called out as an unnecessary flourish.
+  The panel's own title ("At a Glance") moved from a small caps label to
+  a real bold heading (`--font-display`, 1.15rem/700) matching how every
+  other panel title on the page reads.
 
-All three self-hosted as static `.woff2` files under `fonts/`, referenced by
+All four self-hosted as static `.woff2` files under `fonts/`, referenced by
 local `@font-face` — no external Google Fonts request, no build step.
 Licensed OFL via Google Fonts.
 
@@ -118,6 +127,21 @@ Licensed OFL via Google Fonts.
   JavaScript fails, rather than hiding real content behind a script that
   didn't run. Skipped (content shown immediately) under
   `prefers-reduced-motion` or when `IntersectionObserver` isn't available.
+- **`.switch-btn--armed`** (removed) — the Resume link used to render as a
+  filled, highlighted button distinct from Email/Phone/LinkedIn/GitHub;
+  review asked for it to match the others, so it's a plain `.switch-btn`
+  now with no special-case styling.
+- **Scroll-spy stability at the bottom of the page** — the last section is
+  usually shorter than the scroll-spy's `rootMargin` band, so it could
+  never cleanly satisfy it; right at the true bottom the observer had
+  nothing stable to settle on and would flicker the active tab (and the
+  indicator bar with it) between the last two sections on tiny scroll
+  jitter, felt as a shake. Fixed two ways in `script.js`: `setActive()`
+  now no-ops when the id hasn't changed (skipping a redundant forced
+  layout read in `moveIndicator()`), and a passive scroll listener
+  force-activates the last section once `scrollY + innerHeight` reaches
+  the page's true `scrollHeight`, bypassing the observer's margin math
+  entirely at that point.
 
 ## Content-authoring pattern (preserved)
 

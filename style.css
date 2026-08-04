@@ -15,11 +15,11 @@
    ========================================================= */
 
 @font-face {
-  font-family: 'Bricolage Grotesque';
+  font-family: 'Oswald';
   font-style: normal;
-  font-weight: 600 800;
+  font-weight: 500 700;
   font-display: swap;
-  src: url('fonts/bricolage-grotesque-variable.woff2') format('woff2');
+  src: url('fonts/oswald-variable.woff2') format('woff2');
 }
 @font-face {
   font-family: 'Archivo';
@@ -34,6 +34,13 @@
   font-weight: 400 600;
   font-display: swap;
   src: url('fonts/jetbrains-mono-variable.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Martian Mono';
+  font-style: normal;
+  font-weight: 500 700;
+  font-display: swap;
+  src: url('fonts/martian-mono-variable.woff2') format('woff2');
 }
 :root {
   /* Ground / panel surfaces — brushed-aluminum light gray, never stark white */
@@ -67,9 +74,10 @@
   --signal-red: #C4392A;
   --signal-red-bright: #E15D4C;
 
-  --font-display: 'Bricolage Grotesque', sans-serif;
+  --font-display: 'Oswald', 'Arial Narrow', sans-serif;
   --font-body: 'Archivo', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
+  --font-label: 'Martian Mono', 'JetBrains Mono', monospace;
 
   --radius: 3px;
   --max-width: 1280px;
@@ -187,10 +195,10 @@ a:focus-visible, button:focus-visible {
   align-items: center;
   gap: 0.5rem;
   padding: 0.55rem 0.9rem;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
+  font-family: var(--font-label);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
   color: var(--ink-faint);
   background: var(--panel);
@@ -338,10 +346,10 @@ section.plate:first-of-type { margin-top: 0; }
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.05em;
+  font-family: var(--font-label);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
   color: var(--accent);
   background: var(--accent-dim);
@@ -385,8 +393,6 @@ section.plate:first-of-type { margin-top: 0; }
   transition: border-color 0.15s var(--ease), color 0.15s var(--ease), background 0.15s var(--ease);
 }
 .switch-btn:hover { border-color: var(--accent); color: var(--ink); }
-.switch-btn--armed { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
-.switch-btn--armed:hover { background: var(--accent); color: #FFFFFF; }
 
 /* ---------------------------------------------------------
    SUMMARY + READOUT PANEL
@@ -409,12 +415,11 @@ section.plate:first-of-type { margin-top: 0; }
 }
 
 .readout-panel-title {
-  font-family: var(--font-mono);
-  font-weight: 600;
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+  color: var(--ink);
   margin-bottom: 1.4rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid var(--bezel);
@@ -430,10 +435,10 @@ section.plate:first-of-type { margin-top: 0; }
 .readout-list li:last-child { border-bottom: none; padding-bottom: 0; }
 
 .readout-label {
-  font-family: var(--font-mono);
-  font-size: 0.66rem;
+  font-family: var(--font-label);
+  font-size: 0.64rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.03em;
   color: var(--accent);
 }
 .readout-value { font-size: 0.95rem; font-weight: 500; color: var(--ink); }
@@ -552,10 +557,10 @@ a.cert-card:hover { border-color: var(--accent); }
 
 .module-card-tag {
   align-self: flex-start;
-  font-family: var(--font-mono);
-  font-size: 0.64rem;
+  font-family: var(--font-label);
+  font-size: 0.62rem;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.02em;
   padding: 0.3rem 0.65rem;
   border-radius: var(--radius);
   background: var(--accent-dim);
@@ -578,8 +583,8 @@ a.cert-card:hover { border-color: var(--accent); }
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-family: var(--font-label);
+  font-size: 0.74rem;
   font-weight: 600;
   color: var(--accent);
 }
@@ -740,10 +745,10 @@ video.step-viewer-image {
   border-bottom: 1px solid var(--bezel);
 }
 .step-viewer-table th {
-  font-family: var(--font-mono);
-  font-size: 0.66rem;
+  font-family: var(--font-label);
+  font-size: 0.62rem;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.02em;
   color: var(--accent);
   background: var(--accent-dim);
 }
@@ -835,10 +840,11 @@ video.step-viewer-image {
 .sequence-marker--dim { border-color: var(--ink-faint); }
 
 .sequence-date {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-family: var(--font-label);
+  font-size: 0.72rem;
+  font-weight: 600;
   color: var(--accent);
-  letter-spacing: 0.03em;
+  letter-spacing: 0.01em;
   margin-bottom: 0.35rem;
 }
 .sequence-title { font-size: 1.3rem; font-weight: 700; font-family: var(--font-display); letter-spacing: -0.01em; margin-bottom: 0.25rem; }
