@@ -346,7 +346,6 @@ const ENGINEERING_PROJECTS = [
   },
   {
     title: "Analog Line-Tracking Robot",
-    status: "pending",
     description:
       "An autonomous robot that follows a track using analog sensor " +
       "feedback.",
@@ -623,27 +622,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  /* ---- Render certifications as annunciator lamps ---- */
+  /* ---- Render certifications ---- */
   const certGrid = document.getElementById('certGrid');
   CERTIFICATIONS.forEach(cert => {
     const el = document.createElement(cert.url ? 'a' : 'div');
-    el.className = 'lamp-card';
+    el.className = 'cert-card';
     if (cert.url) {
       el.href = cert.url;
       el.target = '_blank';
       el.rel = 'noopener';
     }
-    const dot = document.createElement('span');
-    dot.className = 'lamp-dot';
-    dot.setAttribute('aria-hidden', 'true');
-    el.appendChild(dot);
     if (cert.logo) {
       const logoImg = document.createElement('img');
       logoImg.src = cert.logo;
       logoImg.alt = '';
       logoImg.loading = 'lazy';
       logoImg.decoding = 'async';
-      logoImg.className = 'lamp-card-logo';
+      logoImg.className = 'cert-card-logo';
       el.appendChild(logoImg);
     }
     const nameSpan = document.createElement('span');
@@ -737,10 +732,23 @@ document.addEventListener('DOMContentLoaded', () => {
     modalStepNext.disabled = activeStepIndex === activeSteps.length - 1;
   }
 
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   function goToStep(index) {
     if (index < 0 || index >= activeSteps.length) return;
-    activeStepIndex = index;
-    renderStep();
+    if (prefersReducedMotion) {
+      activeStepIndex = index;
+      renderStep();
+      return;
+    }
+    // Crossfade: fade the current step out, swap content while invisible,
+    // then fade the new step in.
+    modalStepViewer.classList.add('is-transitioning');
+    window.setTimeout(() => {
+      activeStepIndex = index;
+      renderStep();
+      modalStepViewer.classList.remove('is-transitioning');
+    }, 160);
   }
 
   modalStepDots.addEventListener('click', (e) => {
@@ -783,14 +791,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const tagHtml = project.tag
         ? `<span class="module-card-tag">${project.tag}</span>`
         : '';
-      const isPending = project.status === 'pending';
-      const statusHtml = `
-        <span class="module-status${isPending ? ' module-status--pending' : ''}">
-          <span class="lamp-dot" aria-hidden="true"></span>${isPending ? 'In Progress' : 'Documented'}
-        </span>
-      `;
       card.innerHTML = `
-        ${statusHtml}
         ${thumbHtml}
         <div class="module-card-body">
           ${tagHtml}

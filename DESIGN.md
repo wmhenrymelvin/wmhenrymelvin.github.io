@@ -67,26 +67,41 @@ Licensed OFL via Google Fonts.
   switches (each carries its own lamp dot), not a pill group with a sliding
   indicator. Active state is per-switch, driven by scroll-spy /
   click-to-scroll in `script.js`.
-- **`.module-card`** — project cards as instrument modules: a
-  `.module-status` lamp badge ("Documented" green / "In Progress" amber)
-  reads from `project.status` in `script.js`.
-- **`.lamp-card`** — certifications as an annunciator lamp list.
-- **`.skill-switch`** — skills as toggle switches left in the "on" position.
+- **`.hero-photo-wrap`** — a plain bordered circular photo. An earlier draft
+  added a porthole ring with tick marks around it; review called it out as
+  overlapping/distracting, so it's gone — just the photo.
+- **`.module-card`** — project cards as instrument modules, with a hover
+  thumbnail zoom and lift as the "click me" affordance. An earlier draft
+  added a floating "Documented"/"In Progress" status badge over the
+  thumbnail; review called it out as looking unprofessional, so it's
+  removed. The still-unfinished "Analog Line-Tracking Robot" project says
+  so in its own description text instead.
+- **`.cert-card`** (in `.cert-list`) — certifications as a plain logo + name
+  list. An earlier draft put a lit lamp dot beside each one; review called
+  it out as unexplained decoration (no real on/off state to report), so
+  it's gone.
+- **`.skill-chip`** (in `.switch-panel`) — skills as plain labeled chips. An
+  earlier draft rendered each as a toggle switch; review correctly pointed
+  out a skill has no on/off state to represent, so the toggle is gone.
 - **Grade table** — `GRADE_LAMPS` map in `script.js` turns the token
   `good`/`watch`/`fail` into a lamp-dot + label span (`.grade-cell`),
-  replacing the previous emoji (🟢🟡🔴).
+  replacing the previous emoji (🟢🟡🔴). This one lamp use stays: it reports
+  a real pass/watch/fail result, not decoration.
 - **Icons** — Lucide (mail, phone, download, chevron, x, external-link,
   arrow-right) and the GitHub mark from Simple Icons, inlined as SVG with
   `currentColor` stroke/fill. No emoji or Unicode glyphs standing in for UI
   icons anywhere.
+- **Project modal motion** — one authored moment: the modal pops in with a
+  slight overshoot ease, and stepping through a project's build record
+  crossfades the content (`.step-viewer.is-transitioning`, driven by
+  `goToStep()` in `script.js`) instead of swapping instantly. Skipped
+  entirely under `prefers-reduced-motion`.
 
 ## Content-authoring pattern (preserved)
 
 Projects and certifications still render from the `ENGINEERING_PROJECTS` /
 `DATA_PROJECTS` / `CERTIFICATIONS` arrays in `script.js` — adding an entry is
-still enough to get a card and modal, no HTML editing required. A project's
-optional `status: "pending"` field flips its module badge to amber
-"In Progress"; omit it for the default green "Documented".
+still enough to get a card and modal, no HTML editing required.
 
 ## Known intentional exception
 
