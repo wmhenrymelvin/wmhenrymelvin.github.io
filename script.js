@@ -843,7 +843,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // every call while the user is mid-scroll.
     if (indicatorFrame) cancelAnimationFrame(indicatorFrame);
     indicatorFrame = requestAnimationFrame(() => {
-      navIndicator.style.transform = `translateX(${btn.offsetLeft}px) scaleX(${btn.offsetWidth})`;
+      // translateY too, not just translateX: when the switch bank wraps
+      // to a second row, the active switch isn't necessarily in the
+      // same row the indicator's static CSS position would assume.
+      const y = btn.offsetTop + btn.offsetHeight + 3;
+      navIndicator.style.transform = `translate(${btn.offsetLeft}px, ${y}px) scaleX(${btn.offsetWidth})`;
       indicatorFrame = null;
     });
   }

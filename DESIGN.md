@@ -97,10 +97,24 @@ Licensed OFL via Google Fonts.
   dot (`.switch-lamp`) in an earlier pass; removed on request, so the
   active state now reads from the indicator bar plus the switch's own
   border/background color alone. The indicator animates via
-  `transform: translateX() scaleX()` against a fixed 1px base width, not
+  `transform: translate() scaleX()` against a fixed 1px base width, not
   by transitioning `width` directly — the detector flags animated layout
   properties (width/height/padding/margin) as layout-thrash, and this
-  keeps the same visual result on the compositor only.
+  keeps the same visual result on the compositor only. The transform
+  drives both axes, not just X: when the bank wraps to a second row at
+  narrower desktop widths, the active switch isn't necessarily in the
+  row the indicator's static CSS position would assume, so `top`/`left`
+  stay `0` in CSS and `moveIndicator()` computes the real `offsetTop` +
+  `offsetLeft` for whichever switch is actually active, every time.
+- **`.switch-bank` overflow** — deliberately carries no `overflow-x`.
+  Setting only one overflow axis computes the other to `auto` too (CSS
+  Overflow spec), and since `flex-wrap` already handles "doesn't fit on
+  one line" by wrapping to a second row, an `overflow-x: auto` a
+  previous pass added turned into a real, unwanted *vertical* scrollbar
+  inside the switch bank the moment it wrapped — misreported as
+  "up/down arrows next to the top icons," and it also ate into the
+  bank's width, visibly shoving the wrapped switch further over. Fully
+  reproduced and fixed; nothing here was ever a browser or OS artifact.
 - **`.hero-photo-wrap`** — a plain bordered circular photo. An earlier draft
   added a porthole ring with tick marks around it; review called it out as
   overlapping/distracting, so it's gone — just the photo.

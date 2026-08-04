@@ -189,7 +189,12 @@ a:focus-visible, button:focus-visible {
   gap: 0.35rem;
   flex-wrap: wrap;
   justify-self: center;
-  overflow-x: auto;
+  /* No overflow-x here on purpose: setting only one overflow axis
+     computes the other to "auto" too (CSS Overflow spec), and since
+     flex-wrap already handles the "doesn't fit on one line" case by
+     wrapping to a second row, an unwanted vertical scrollbar could
+     appear on this box the moment it wrapped - that was the actual
+     cause of the "arrows" bug, not a browser scrollbar at all. */
 }
 
 .switch {
@@ -219,7 +224,10 @@ a:focus-visible, button:focus-visible {
 
 .nav-indicator {
   position: absolute;
-  bottom: -3px;
+  /* top/left stay 0; JS drives both axes via transform so the bar
+     tracks the active switch's own row instead of always sitting at
+     the bottom of the whole (possibly multi-row, wrapped) nav block */
+  top: 0;
   left: 0;
   height: 2px;
   width: 1px;
