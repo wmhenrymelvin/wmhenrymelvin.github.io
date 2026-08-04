@@ -19,34 +19,44 @@ Machinery's Handbook reference page, CNC toolpath viewer.
 
 ## Color
 
-Full palette strategy (not restrained neutrals, not one committed accent) —
-color is functional/semantic here, not decorative, matching how a real panel
-uses lamp color.
+Restrained strategy: neutrals plus one deliberate accent, not a full
+status-color palette spent as UI branding. An earlier draft used the grade
+table's status green as the site's primary accent — nav, links, tags, dates,
+focus rings — and review correctly called that out as "random green text":
+green wasn't reporting a status in any of those places, so it read as
+unmotivated decoration, not signal.
 
 - `--ground` `#EEF0F2` / `--panel` `#FFFFFF` / `--panel-raised` `#F5F6F8` —
   three-step brushed-aluminum ground, never stark flat white.
 - `--bezel` `#D7DBE0` plus `--bezel-hi`/`--bezel-lo` — the metal-edge bevel
   used on every `.plate` (inset shadow + corner rivet dots).
 - `--ink` `#1B1E23` primary text; `--ink-soft` `#5C6570` / `--ink-faint`
-  `#8A929C` secondary text, tinted from the ground's cool hue, never flat
-  gray.
-- `--signal-green` `#1F9D5C` / `--signal-amber` `#A6690A` / `--signal-red`
-  `#C4392A` — deep, text-safe tones for labels and borders on the light
-  ground. Each has a `-bright` variant (`#34D67F` / `#F0A93E` / `#E15D4C`)
-  used only for lamp dots, glows, and badges floating over photos, where a
-  vivid "lit" color reads better than a contrast-safe one — and a `-dim`
-  variant (a pale tint of the same hue) used as the fill behind the base
-  tone's text, e.g. the active nav switch or the annunciator badge.
-- Red is deliberately reserved for the bike-fit grade table's "fail" cell;
-  real panels don't spend red on decoration.
+  `#6C7580` secondary text, tinted from the ground's cool hue, never flat
+  gray. (`--ink-faint` was `#8A929C` in an earlier pass — measured at 3.15:1
+  against white, which fails WCAG AA's 4.5:1 for the small text it's used
+  in; darkened to clear 4.5:1.)
+- `--accent` `#2458C9` / `--accent-bright` `#4C86FF` / `--accent-dim`
+  `#E5EDFB` — the one deliberate "on/active" color: nav indicator, active
+  switch, links, tags, focus rings, the annunciator badge. Verified at
+  6.3:1 against white at the sizes it's used in.
+- `--signal-green` / `--signal-amber-bright` / `--signal-red` — scoped to
+  exactly one place now: the bike-fit grade table's pass/watch/fail dots.
+  Not used anywhere else, so on the rare page where it appears it actually
+  means something.
 
 Light is the physical scene here: office/desk daylight, not a dim machine
 room — the brief's own call, not a default.
 
 ## Type
 
-- **Oswald** (condensed, weights 500–700) — engraved panel labels, all
-  headings, nav switches. Uppercase, tight tracking.
+- **Bricolage Grotesque** (weights 600–800) — headings, nav switches, project
+  and section titles. Replaces an earlier pass's Oswald: review called
+  Oswald's condensed, tightly-tracked, all-caps treatment "robotic," so the
+  face changed and the treatment did too — big display text (hero name,
+  section headers, project/experience titles) dropped `text-transform:
+  uppercase` entirely; only small mono labels (nav pills, tags, the
+  annunciator badge) keep it, where all-caps reads as a label convention
+  rather than a display voice.
 - **Archivo** (400–700) — body copy and UI text.
 - **JetBrains Mono** (400–600) — data labels, code blocks, small caps
   micro-copy (readout labels, tags, footer). Every value in the At a Glance
@@ -63,10 +73,14 @@ Licensed OFL via Google Fonts.
 - **`.plate`** — the base module unit (hero, every section, why-ISAT
   blocks). Bezeled border, two corner rivet dots (`::before`/`::after`),
   soft real shadow (offset + blur).
-- **`.switchboard` / `.switch`** — nav is a bank of individually-lit
-  switches (each carries its own lamp dot), not a pill group with a sliding
-  indicator. Active state is per-switch, driven by scroll-spy /
-  click-to-scroll in `script.js`.
+- **`.switchboard` / `.switch`** — nav is centered (`grid-template-columns:
+  1fr auto 1fr`) with an animated `.nav-indicator` bar that slides and
+  resizes under the active switch, driven by scroll-spy / click-to-scroll
+  in `script.js`'s `moveIndicator()`. The indicator animates via
+  `transform: translateX() scaleX()` against a fixed 1px base width, not
+  by transitioning `width` directly — the detector flags animated layout
+  properties (width/height/padding/margin) as layout-thrash, and this
+  keeps the same visual result on the compositor only.
 - **`.hero-photo-wrap`** — a plain bordered circular photo. An earlier draft
   added a porthole ring with tick marks around it; review called it out as
   overlapping/distracting, so it's gone — just the photo.
@@ -96,6 +110,14 @@ Licensed OFL via Google Fonts.
   crossfades the content (`.step-viewer.is-transitioning`, driven by
   `goToStep()` in `script.js`) instead of swapping instantly. Skipped
   entirely under `prefers-reduced-motion`.
+- **`.reveal`** — the hero and every major section ease up and fade in once,
+  the first time they enter the viewport (`IntersectionObserver` in
+  `script.js`, unobserved after it fires once — this never re-triggers on
+  scroll-back). Scoped under `html.js .reveal` (the inline script at the top
+  of `<head>` adds the `js` class) so content stays visible by default if
+  JavaScript fails, rather than hiding real content behind a script that
+  didn't run. Skipped (content shown immediately) under
+  `prefers-reduced-motion` or when `IntersectionObserver` isn't available.
 
 ## Content-authoring pattern (preserved)
 

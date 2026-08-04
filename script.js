@@ -821,19 +821,29 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'ArrowLeft') goToStep(activeStepIndex - 1);
   });
 
-  /* ---- Nav: each switch lights up on its own (no sliding indicator),
-     explicit smooth scroll, scroll-spy ---- */
+  /* ---- Nav: each switch lights up, plus an indicator bar that
+     slides to sit under whichever one is active; explicit smooth
+     scroll, scroll-spy ---- */
   const switchButtons = document.querySelectorAll('.switch');
   const sections = document.querySelectorAll('section.plate');
   const navHeight = document.querySelector('.switchboard').offsetHeight;
+  const navIndicator = document.querySelector('.nav-indicator');
 
   let isClickScrolling = false;
   let clickScrollTimeout = null;
+
+  function moveIndicator(btn) {
+    if (!btn || !navIndicator) return;
+    // transform-only (translate + scale) instead of animating width,
+    // so this never triggers a layout reflow mid-transition.
+    navIndicator.style.transform = `translateX(${btn.offsetLeft}px) scaleX(${btn.offsetWidth})`;
+  }
 
   function setActive(id) {
     switchButtons.forEach(b => {
       b.classList.toggle('is-active', b.dataset.section === id);
     });
+    moveIndicator(document.querySelector('.switch.is-active'));
   }
 
   // Explicit smooth scroll on click, with the active switch lit
@@ -871,6 +881,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
 
     sections.forEach(section => observer.observe(section));
+  }
+
+  // Keep the indicator aligned through font load, resize, and wrap changes.
+  window.addEventListener('load', () => moveIndicator(document.querySelector('.switch.is-active')));
+  window.addEventListener('resize', () => moveIndicator(document.querySelector('.switch.is-active')));
+  moveIndicator(document.querySelector('.switch.is-active'));
+
+  /* ---- Reveal on scroll (and once, on load, for the hero) ---- */
+  if ('IntersectionObserver' in window && !prefersReducedMotion) {
+    const revealTargets = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    revealTargets.forEach(target => revealObserver.observe(target));
+  } else {
+    document.querySelectorAll('.reveal').forEach(target => target.classList.add('is-visible'));
   }
 
 });
