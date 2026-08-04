@@ -599,7 +599,7 @@ const CERTIFICATIONS = [
   { name: "Onshape: Introduction to 2D Drawings", url: "https://ti-user-certificates.s3.amazonaws.com/6e557ed6-d03d-4c48-9492-4d18d145d7a1/d7120f61-72c7-4c0f-9478-cac118956c7a-henry-melvin-0edfade4-605b-42ae-ae95-cc66399417c2-certificate.pdf", logo: "images/onshape-logo.png" },
   { name: "Onshape: Direct Editing", url: "https://ti-user-certificates.s3.amazonaws.com/6e557ed6-d03d-4c48-9492-4d18d145d7a1/d7120f61-72c7-4c0f-9478-cac118956c7a-henry-melvin-343dd4f6-e626-465e-8b62-fa46ca46cb36-certificate.pdf", logo: "images/onshape-logo.png" },
   { name: "Understanding Curves", url: "https://ti-user-certificates.s3.amazonaws.com/6e557ed6-d03d-4c48-9492-4d18d145d7a1/d7120f61-72c7-4c0f-9478-cac118956c7a-henry-melvin-43042ac5-33f4-4f4f-a3a9-99dc5bb21051-certificate.pdf", logo: "images/onshape-logo.png" },
-  { name: "Mandatory Controlled Unclassified Information", url: "images/cui-certificate.png", logo: "images/dod-logo.jpg" },
+  { name: "Mandatory Controlled Unclassified Information", url: "images/cui-certificate.jpg", logo: "images/dod-logo.jpg" },
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -622,6 +622,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const logoImg = document.createElement('img');
       logoImg.src = cert.logo;
       logoImg.alt = '';
+      logoImg.loading = 'lazy';
+      logoImg.decoding = 'async';
       logoImg.className = 'cert-card-logo';
       el.appendChild(logoImg);
     }
@@ -753,7 +755,7 @@ document.addEventListener('DOMContentLoaded', () => {
       card.type = 'button';
       card.className = 'project-card';
       const thumbHtml = project.thumbnail
-        ? `<img class="project-card-thumb" src="${project.thumbnail}" alt="${project.title}">`
+        ? `<img class="project-card-thumb" src="${project.thumbnail}" alt="${project.title}" loading="lazy" decoding="async">`
         : '';
       const tagHtml = project.tag
         ? `<span class="project-card-tag">${project.tag}</span>`
