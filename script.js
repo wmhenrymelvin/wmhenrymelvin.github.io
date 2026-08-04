@@ -29,6 +29,10 @@ const ENGINEERING_PROJECTS = [
         title: "Gauge Control Box",
         image: "images/etc-project-3.jpg",
         description:
+          "Built with one other student — we split every stage of this " +
+          "project together rather than dividing it by specialty, so " +
+          "\"we\" below means both of us on the circuit design, the " +
+          "fabrication, and the testing, not a stand-in for solo work. " +
           "We began by building a control box that consolidates " +
           "monitoring for the wind engine, wiring together analog gauges " +
           "for water temperature, oil pressure, and tachometer readings " +
@@ -143,6 +147,7 @@ const ENGINEERING_PROJECTS = [
       {
         title: "What It Is",
         images: ["images/swift-ccp-product.png", "images/swift-cpu-product.png"],
+        // 🔧 UPDATE: swap in your own SWIFT photos here whenever you have them
         description:
           "SWIFT stands for Severe Weather Infield Transport. It's built " +
           "around two connected components, both made of air beams — " +
@@ -157,25 +162,17 @@ const ENGINEERING_PROJECTS = [
           "with a patient already on the ground — weighs about 15.5 lbs, " +
           "and supports over 400 lbs of load. Its suspended hammock holds " +
           "the torso at roughly a 30° angle to reduce aspiration risk, " +
-          "with 5 layers of insulation and a waterproof outer skin.",
+          "with 5 layers of insulation and a waterproof outer skin. The " +
+          "two aren't separate products but one workflow: a CPU deploys " +
+          "directly beneath an injured person at the point of injury, " +
+          "then transports and docks into a CCP, keeping thermal and " +
+          "environmental protection intact the whole time instead of " +
+          "exposing the patient during transfer. Because a single CCP can " +
+          "dock up to four CPUs, this scales cleanly from one casualty to " +
+          "organized multi-patient triage.",
       },
       {
-        title: "How They Work Together",
-        image: "images/swift-multi-cpu-docking.jpg",
-        description:
-          "The two components are designed as a single workflow rather " +
-          "than separate products. A CPU deploys directly beneath an " +
-          "injured person at the point of injury, providing immediate " +
-          "protection before they're moved. Once stabilized, the CPU " +
-          "transports the casualty to a CCP and docks directly into it, " +
-          "maintaining thermal and environmental protection the entire " +
-          "time instead of exposing the patient during transfer. Because " +
-          "a single CCP can dock multiple CPUs, this scales cleanly from " +
-          "one casualty to organized multi-patient triage — shown here " +
-          "with two CPUs docked into one CCP.",
-      },
-      {
-        title: "My Role: Airbeams & Circumferentials",
+        title: "Airbeams & Circumferentials",
         image: "images/swift-airbeam-components.jpg",
         description:
           "My role covered a few stages of this build. I helped " +

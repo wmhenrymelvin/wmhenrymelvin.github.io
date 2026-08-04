@@ -800,6 +800,8 @@ video.step-viewer-image {
 }
 .sequence-title { font-size: 1.25rem; font-weight: 600; font-family: var(--font-display); text-transform: uppercase; letter-spacing: 0.01em; margin-bottom: 0.25rem; }
 .sequence-org { font-size: 0.94rem; color: var(--ink-soft); font-weight: 500; margin-bottom: 0.65rem; }
+.sequence-org a { text-decoration: underline; text-decoration-color: var(--bezel); text-underline-offset: 2px; transition: color 0.15s var(--ease), text-decoration-color 0.15s var(--ease); }
+.sequence-org a:hover { color: var(--signal-green); text-decoration-color: var(--signal-green); }
 .sequence-desc { font-size: 0.94rem; color: var(--ink-soft); margin-bottom: 0; }
 
 /* ---------------------------------------------------------
