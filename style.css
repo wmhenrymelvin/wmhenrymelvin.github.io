@@ -4,12 +4,11 @@
    Design direction: a control panel / annunciator board — the
    physical language of the gauge panels and control boxes Henry
    actually builds (see the ETC gauge control box, the Ryzing
-   textile/inflatable control systems). Dark instrument-panel
-   ground, engraved condensed labels, indicator-lamp status
-   color, seven-segment digits reserved for the one genuine
-   readout moment. Every section is a mounted panel module with
-   bolted corners; nav is a physical switch bank, not a pill
-   with a sliding indicator; skills are toggles left "on";
+   textile/inflatable control systems). A light, brushed-aluminum
+   instrument-panel ground, engraved condensed labels, and
+   indicator-lamp status color. Every section is a mounted panel
+   module with bolted corners; nav is a physical switch bank, not
+   a pill with a sliding indicator; skills are toggles left "on";
    certifications are an annunciator lamp list; project cards
    are instrument modules.
    ========================================================= */
@@ -35,47 +34,37 @@
   font-display: swap;
   src: url('fonts/jetbrains-mono-variable.woff2') format('woff2');
 }
-@font-face {
-  font-family: 'DSEG7 Classic';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('fonts/dseg7-classic-regular.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'DSEG7 Classic';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url('fonts/dseg7-classic-bold.woff2') format('woff2');
-}
-
 :root {
-  /* Ground / panel surfaces — cool graphite, never pure black */
-  --ground: #14161a;
-  --panel: #1b1e23;
-  --panel-raised: #22262c;
-  --bezel: #33383f;
-  --bezel-hi: rgba(255, 255, 255, 0.05);
-  --bezel-lo: rgba(0, 0, 0, 0.4);
+  /* Ground / panel surfaces — brushed-aluminum light gray, never stark white */
+  --ground: #EEF0F2;
+  --panel: #FFFFFF;
+  --panel-raised: #F5F6F8;
+  --bezel: #D7DBE0;
+  --bezel-hi: rgba(255, 255, 255, 0.8);
+  --bezel-lo: rgba(20, 24, 30, 0.35);
 
-  /* Ink — warm off-white engraved fill, secondary tinted from the ground hue */
-  --ink: #EDEBE6;
-  --ink-soft: #8D96A1;
-  --ink-faint: #5B636D;
+  /* Ink — near-black engraved fill, secondary tinted from the ground hue */
+  --ink: #1B1E23;
+  --ink-soft: #5C6570;
+  --ink-faint: #8A929C;
 
-  /* Signal colors — real indicator-lamp meaning, not decoration */
-  --signal-green: #3ED27F;
-  --signal-green-dim: #1E3B2C;
-  --signal-amber: #F0A93E;
-  --signal-amber-dim: #3F3120;
-  --signal-red: #E15D4C;
-  --signal-red-dim: #3D2420;
+  /* Signal colors — real indicator-lamp meaning, not decoration.
+     Base tones carry text/label contrast on the light ground;
+     -bright variants are for lamp dots/glows and badges floating
+     over photos, where "lit" reads better as vivid, not deep. */
+  --signal-green: #1F9D5C;
+  --signal-green-bright: #34D67F;
+  --signal-green-dim: #E1F5EA;
+  --signal-amber: #A6690A;
+  --signal-amber-bright: #F0A93E;
+  --signal-amber-dim: #FBF0DC;
+  --signal-red: #C4392A;
+  --signal-red-bright: #E15D4C;
+  --signal-red-dim: #FBEAE7;
 
   --font-display: 'Oswald', 'Arial Narrow', sans-serif;
   --font-body: 'Archivo', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
-  --font-readout: 'DSEG7 Classic', 'JetBrains Mono', monospace;
 
   --radius: 3px;
   --max-width: 1280px;
@@ -136,7 +125,7 @@ a:focus-visible, button:focus-visible {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(20, 22, 26, 0.88);
+  background: rgba(238, 240, 242, 0.88);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--bezel);
 }
@@ -199,8 +188,8 @@ a:focus-visible, button:focus-visible {
   background: var(--signal-green-dim);
 }
 .switch.is-active .switch-lamp {
-  background: var(--signal-green);
-  box-shadow: 0 0 6px 1px var(--signal-green);
+  background: var(--signal-green-bright);
+  box-shadow: 0 0 6px 1px var(--signal-green-bright);
 }
 
 /* ---------------------------------------------------------
@@ -213,7 +202,7 @@ a:focus-visible, button:focus-visible {
   background: var(--panel);
   border: 1px solid var(--bezel);
   border-radius: var(--radius);
-  box-shadow: 0 1px 0 var(--bezel-hi) inset, 0 8px 24px -12px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 1px 0 var(--bezel-hi) inset, 0 8px 24px -14px rgba(20, 24, 30, 0.18);
 }
 .plate::before,
 .plate::after,
@@ -225,7 +214,7 @@ a:focus-visible, button:focus-visible {
   height: 5px;
   border-radius: 50%;
   background: var(--bezel);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.5), 0 1px 0 var(--bezel-hi);
+  box-shadow: inset 0 1px 1px rgba(20, 24, 30, 0.3), 0 1px 0 var(--bezel-hi);
 }
 .plate::before { top: 10px; left: 10px; }
 .plate::after { bottom: 10px; left: 10px; }
@@ -346,8 +335,8 @@ section.plate:first-of-type { margin-top: 0; }
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--signal-green);
-  box-shadow: 0 0 7px 1.5px var(--signal-green);
+  background: var(--signal-green-bright);
+  box-shadow: 0 0 7px 1.5px var(--signal-green-bright);
   flex-shrink: 0;
   animation: lamp-pulse 2.4s ease-in-out infinite;
 }
@@ -377,7 +366,7 @@ section.plate:first-of-type { margin-top: 0; }
 }
 .switch-btn:hover { border-color: var(--signal-green); color: var(--ink); }
 .switch-btn--armed { background: var(--signal-green-dim); border-color: var(--signal-green); color: var(--signal-green); }
-.switch-btn--armed:hover { background: var(--signal-green); color: var(--ground); }
+.switch-btn--armed:hover { background: var(--signal-green); color: #FFFFFF; }
 
 /* ---------------------------------------------------------
    SUMMARY + READOUT PANEL
@@ -396,7 +385,7 @@ section.plate:first-of-type { margin-top: 0; }
   border: 1px solid var(--bezel);
   border-radius: var(--radius);
   padding: 1.75rem;
-  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 2px 8px rgba(20, 24, 30, 0.1);
 }
 
 .readout-panel-title {
@@ -428,13 +417,6 @@ section.plate:first-of-type { margin-top: 0; }
   color: var(--signal-green);
 }
 .readout-value { font-size: 0.95rem; font-weight: 500; color: var(--ink); }
-.readout-value--digital {
-  font-family: var(--font-readout);
-  font-size: 1.15rem;
-  letter-spacing: 0.03em;
-  color: var(--signal-green);
-  text-shadow: 0 0 8px rgba(62, 210, 127, 0.45);
-}
 
 /* ---------------------------------------------------------
    SKILLS — a bank of switches left in the ON position
@@ -474,8 +456,8 @@ section.plate:first-of-type { margin-top: 0; }
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: var(--signal-green);
-  box-shadow: 0 0 4px rgba(62, 210, 127, 0.6);
+  background: var(--signal-green-bright);
+  box-shadow: 0 0 4px rgba(52, 214, 127, 0.6);
 }
 
 /* ---------------------------------------------------------
@@ -506,8 +488,8 @@ a.lamp-card:hover { border-color: var(--signal-green); }
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--signal-green);
-  box-shadow: 0 0 5px 1px rgba(62, 210, 127, 0.6);
+  background: var(--signal-green-bright);
+  box-shadow: 0 0 5px 1px rgba(52, 214, 127, 0.6);
   flex-shrink: 0;
 }
 
@@ -517,7 +499,8 @@ a.lamp-card:hover { border-color: var(--signal-green); }
   object-fit: contain;
   border-radius: 3px;
   flex-shrink: 0;
-  background: var(--ink);
+  background: #FFFFFF;
+  border: 1px solid var(--bezel);
   padding: 2px;
 }
 
@@ -550,7 +533,6 @@ a.lamp-card:hover { border-color: var(--signal-green); }
   object-position: 50% 50%;
   display: block;
   background: var(--ground);
-  filter: saturate(0.92) contrast(1.04);
 }
 .module-card-body {
   padding: 1.75rem;
@@ -577,14 +559,14 @@ a.lamp-card:hover { border-color: var(--signal-green); }
   text-transform: uppercase;
   padding: 0.3rem 0.6rem;
   border-radius: 999px;
-  background: rgba(20, 22, 26, 0.85);
-  color: var(--signal-green);
+  background: rgba(20, 22, 26, 0.78);
+  color: var(--signal-green-bright);
   backdrop-filter: blur(4px);
 }
 .module-status .lamp-dot { width: 6px; height: 6px; }
-.module-status--pending { color: var(--signal-amber); }
+.module-status--pending { color: var(--signal-amber-bright); }
 .module-status--pending .lamp-dot {
-  background: var(--signal-amber);
+  background: var(--signal-amber-bright);
   box-shadow: 0 0 5px 1px rgba(240, 169, 62, 0.6);
 }
 
@@ -667,7 +649,7 @@ a.lamp-card:hover { border-color: var(--signal-green); }
   max-height: 92vh;
   overflow-y: auto;
   position: relative;
-  box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 24px 60px -20px rgba(20, 24, 30, 0.35);
   transform: translateY(12px) scale(0.98);
   transition: transform var(--ease) 0.25s;
 }
@@ -766,8 +748,8 @@ video.step-viewer-image {
 .step-viewer-table tr:last-child td { border-bottom: none; }
 .grade-cell { display: inline-flex; align-items: center; gap: 0.5rem; }
 .grade-cell .lamp-dot { width: 8px; height: 8px; }
-.grade-cell--amber .lamp-dot { background: var(--signal-amber); box-shadow: 0 0 5px 1px rgba(240, 169, 62, 0.6); }
-.grade-cell--red .lamp-dot { background: var(--signal-red); box-shadow: 0 0 5px 1px rgba(225, 93, 76, 0.6); }
+.grade-cell--amber .lamp-dot { background: var(--signal-amber-bright); box-shadow: 0 0 5px 1px rgba(240, 169, 62, 0.6); }
+.grade-cell--red .lamp-dot { background: var(--signal-red-bright); box-shadow: 0 0 5px 1px rgba(225, 93, 76, 0.6); }
 
 .step-viewer-code {
   display: none;
@@ -822,7 +804,7 @@ video.step-viewer-image {
   padding: 0;
   transition: background var(--ease) 0.15s, box-shadow var(--ease) 0.15s;
 }
-.step-dot.is-active { background: var(--signal-green); box-shadow: 0 0 5px 1px rgba(62, 210, 127, 0.6); }
+.step-dot.is-active { background: var(--signal-green-bright); box-shadow: 0 0 5px 1px rgba(52, 214, 127, 0.6); }
 
 /* ---------------------------------------------------------
    EXPERIENCE — a control sequence log
