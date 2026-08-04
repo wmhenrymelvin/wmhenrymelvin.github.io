@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Henry Melvin | Portfolio</title>
 <meta name="description" content="Henry Melvin — Integrated Science and Technology student at James Madison University, Engineer Intern at Ryzing Technologies.">
+<meta name="theme-color" content="#14161a">
 
 <!-- Social share preview (LinkedIn, iMessage, Slack, Twitter/X) -->
 <meta property="og:type" content="website">
@@ -20,45 +21,40 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="favicon.svg">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="style.css?v=18">
+<link rel="stylesheet" href="style.css?v=19">
 </head>
 <body>
+<!--
+THESIS: A portfolio as an instrument panel, not a resume with a hero shot — proof of hands-on capability read the way Henry's own control boxes read, refusing the soft-card SaaS template.
+OWN-WORLD: Dark graphite ground; panels are bolted, bezeled modules; Oswald condensed caps for engraved labels, Archivo for body, JetBrains Mono for data/code, DSEG7 seven-segment reserved for one readout moment; signal-green/amber/red carry real status meaning, never decoration.
+STORY: A recruiter sees a builder who documents physical fabrication and testing with engineering rigor, not a bootcamp grad's template site.
+FIRST VIEWPORT: A data-plate hero — porthole-framed photo, engraved name, a lit annunciator badge for internship status, link switches below.
+FORM: Control panel / annunciator board, candidate 5 of 7 in the derived grounded list (concept-seed key 858f73d1, mode experience).
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md.
+-->
 
-<!-- Decorative background blobs -->
-<div class="bg-decor" aria-hidden="true">
-  <span class="blob blob--teal"></span>
-  <span class="blob blob--amber"></span>
-</div>
-
-<!-- ============ STICKY NAV ============ -->
-<nav class="tabs" aria-label="Page sections">
-  <div class="tabs-inner">
-    <a href="#top" class="nav-mark">HM</a>
-    <div class="tab-group">
-      <a class="tab-btn is-active" data-section="summary" href="#summary">Summary</a>
-      <a class="tab-btn" data-section="engineering-projects" href="#engineering-projects">Engineering</a>
-      <a class="tab-btn" data-section="data-projects" href="#data-projects">Data Analytics</a>
-      <a class="tab-btn" data-section="skills" href="#skills">Skills</a>
-      <a class="tab-btn" data-section="experience" href="#experience">Experience</a>
-      <a class="tab-btn" data-section="why-isat" href="#why-isat">Why ISAT</a>
-      <span class="tab-indicator" aria-hidden="true"></span>
+<!-- ============ SWITCHBOARD NAV ============ -->
+<nav class="switchboard" aria-label="Page sections">
+  <div class="switchboard-inner">
+    <a href="#top" class="panel-id">H·M</a>
+    <div class="switch-bank">
+      <a class="switch is-active" data-section="summary" href="#summary"><span class="switch-lamp" aria-hidden="true"></span>Summary</a>
+      <a class="switch" data-section="engineering-projects" href="#engineering-projects"><span class="switch-lamp" aria-hidden="true"></span>Engineering</a>
+      <a class="switch" data-section="data-projects" href="#data-projects"><span class="switch-lamp" aria-hidden="true"></span>Data Analytics</a>
+      <a class="switch" data-section="skills" href="#skills"><span class="switch-lamp" aria-hidden="true"></span>Skills</a>
+      <a class="switch" data-section="experience" href="#experience"><span class="switch-lamp" aria-hidden="true"></span>Experience</a>
+      <a class="switch" data-section="why-isat" href="#why-isat"><span class="switch-lamp" aria-hidden="true"></span>Why ISAT</a>
     </div>
-    <span class="nav-spacer" aria-hidden="true"></span>
   </div>
 </nav>
 
 <div class="page" id="top">
 
-  <!-- ============ HERO ============ -->
-  <header class="hero">
+  <!-- ============ HERO / DATA PLATE ============ -->
+  <header class="plate hero" id="hero">
     <!-- 🔧 UPDATE: swap images/headshot.jpg for your own photo if you want a different one.
          If the photo doesn't show once this is live on GitHub Pages, the almost-always
-         cause is the images/ folder not actually being uploaded as a folder — see the
-         note below the file list for exact steps. -->
+         cause is the images/ folder not actually being uploaded as a folder. -->
     <div class="hero-photo-wrap">
       <img src="images/headshot.jpg" alt="Henry Melvin" class="hero-photo"
            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
@@ -66,25 +62,42 @@
     </div>
 
     <div class="hero-copy">
-      <p class="eyebrow">Portfolio</p>
-      <h1 class="hero-name">Henry Melvin</h1>
-      <p class="hero-tagline">Integrated Science &amp; Technology</p>
-      <p class="hero-status"><span class="hero-status-dot"></span>Seeking Summer 2027 Engineering Internships</p>
+      <h1 class="plate-name">Henry Melvin</h1>
+      <p class="hero-tagline">INTEGRATED SCIENCE &amp; TECHNOLOGY — JAMES MADISON UNIVERSITY</p>
+      <p class="annunciator" role="status">
+        <span class="annunciator-lamp" aria-hidden="true"></span>
+        Seeking Summer 2027 Engineering Internships
+      </p>
 
       <div class="hero-links">
-        <a href="mailto:wmhenrymelvin@gmail.com" class="pill-link">Email</a>
-        <a href="tel:+15406888237" class="pill-link">Phone</a>
-        <a href="https://linkedin.com/in/william-melvin-b56901348" class="pill-link" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://github.com/wmhenrymelvin" class="pill-link" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:wmhenrymelvin@gmail.com" class="switch-btn">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" /><rect x="2" y="4" width="20" height="16" rx="2" /></svg>
+          Email
+        </a>
+        <a href="tel:+15406888237" class="switch-btn">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" /></svg>
+          Phone
+        </a>
+        <a href="https://linkedin.com/in/william-melvin-b56901348" class="switch-btn" target="_blank" rel="noopener">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/wmhenrymelvin" class="switch-btn" target="_blank" rel="noopener">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          GitHub
+        </a>
         <!-- 🔧 UPDATE: swap Resume.pdf for a newer version whenever you update your resume -->
-        <a href="Resume.pdf" class="pill-link pill-link--accent" download>Resume ↓</a>
+        <a href="Resume.pdf" class="switch-btn switch-btn--armed" download>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3" /><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><path d="m7 10 5 5 5-5" /></svg>
+          Resume
+        </a>
       </div>
     </div>
   </header>
 
   <!-- ============ SUMMARY ============ -->
-  <section class="section" id="summary">
-    <h2 class="section-title">Summary</h2>
+  <section class="plate" id="summary">
+    <h2 class="plate-header">Summary</h2>
     <div class="summary-grid">
       <div class="summary-copy">
         <!-- 🔧 UPDATE: this is your bio — rewrite in your own words any time -->
@@ -113,28 +126,28 @@
         </p>
       </div>
 
-      <aside class="highlight-card">
-        <p class="highlight-card-title">At a glance</p>
-        <ul class="highlight-list">
+      <aside class="readout-panel">
+        <p class="readout-panel-title">At a Glance</p>
+        <ul class="readout-list">
           <li>
-            <span class="highlight-label">University</span>
-            <span class="highlight-value">James Madison University</span>
+            <span class="readout-label">University</span>
+            <span class="readout-value">James Madison University</span>
           </li>
           <li>
-            <span class="highlight-label">Focus</span>
-            <span class="highlight-value">Integrated Science &amp; Technology</span>
+            <span class="readout-label">Focus</span>
+            <span class="readout-value">Integrated Science &amp; Technology</span>
           </li>
           <li>
-            <span class="highlight-label">Currently</span>
-            <span class="highlight-value">Student, James Madison University</span>
+            <span class="readout-label">Currently</span>
+            <span class="readout-value">Student, James Madison University</span>
           </li>
           <li>
-            <span class="highlight-label">Based in</span>
-            <span class="highlight-value">Staunton, Virginia</span>
+            <span class="readout-label">Based in</span>
+            <span class="readout-value">Staunton, Virginia</span>
           </li>
           <li>
-            <span class="highlight-label">Graduating</span>
-            <span class="highlight-value">May 2028</span>
+            <span class="readout-label">Graduating</span>
+            <span class="readout-value readout-value--digital">05·2028</span>
           </li>
         </ul>
       </aside>
@@ -142,60 +155,60 @@
   </section>
 
   <!-- ============ ENGINEERING PROJECTS ============ -->
-  <section class="section" id="engineering-projects">
-    <h2 class="section-title">Engineering Projects</h2>
-    <p class="section-subtext">Click a project to see the full write-up.</p>
+  <section class="plate" id="engineering-projects">
+    <h2 class="plate-header">Engineering Projects</h2>
+    <p class="plate-subtext">Select a module to open its full build record.</p>
     <!-- Projects render from the ENGINEERING_PROJECTS array in script.js —
          add a new project object there and a card + modal appear
          here automatically. No HTML editing needed. -->
-    <div class="project-grid" id="engineeringProjectGrid"></div>
+    <div class="module-grid" id="engineeringProjectGrid"></div>
   </section>
 
   <!-- ============ DATA ANALYTICS PROJECTS ============ -->
-  <section class="section" id="data-projects">
-    <h2 class="section-title">Data Analytics Projects</h2>
-    <p class="section-subtext">Click a project to see the full write-up.</p>
+  <section class="plate" id="data-projects">
+    <h2 class="plate-header">Data Analytics Projects</h2>
+    <p class="plate-subtext">Select a module to open its full build record.</p>
     <!-- Projects render from the DATA_PROJECTS array in script.js —
          add a new project object there and a card + modal appear
          here automatically. No HTML editing needed. -->
-    <div class="project-grid" id="dataProjectGrid"></div>
+    <div class="module-grid" id="dataProjectGrid"></div>
   </section>
 
   <!-- ============ SKILLS ============ -->
-  <section class="section" id="skills">
-    <h2 class="section-title">Skills</h2>
+  <section class="plate" id="skills">
+    <h2 class="plate-header">Skills</h2>
 
-    <!-- 🔧 UPDATE: add, remove, or reorder skill cards freely -->
-    <div class="skill-grid">
-      <div class="skill-card">Creative Problem Solving</div>
-      <div class="skill-card">Project Management</div>
-      <div class="skill-card">CAD</div>
-      <div class="skill-card">Data Analytics</div>
-      <div class="skill-card">Communication &amp; Leadership</div>
-      <div class="skill-card">Microsoft Word</div>
-      <div class="skill-card">Microsoft Excel</div>
-      <div class="skill-card">Microsoft PowerPoint</div>
+    <!-- 🔧 UPDATE: add, remove, or reorder skill switches freely -->
+    <div class="switch-panel">
+      <div class="skill-switch"><span class="skill-switch-toggle" aria-hidden="true"></span>Creative Problem Solving</div>
+      <div class="skill-switch"><span class="skill-switch-toggle" aria-hidden="true"></span>Project Management</div>
+      <div class="skill-switch"><span class="skill-switch-toggle" aria-hidden="true"></span>CAD</div>
+      <div class="skill-switch"><span class="skill-switch-toggle" aria-hidden="true"></span>Data Analytics</div>
+      <div class="skill-switch"><span class="skill-switch-toggle" aria-hidden="true"></span>Communication &amp; Leadership</div>
+      <div class="skill-switch"><span class="skill-switch-toggle" aria-hidden="true"></span>Microsoft Word</div>
+      <div class="skill-switch"><span class="skill-switch-toggle" aria-hidden="true"></span>Microsoft Excel</div>
+      <div class="skill-switch"><span class="skill-switch-toggle" aria-hidden="true"></span>Microsoft PowerPoint</div>
     </div>
 
-    <h2 class="section-title section-title--spaced">Certifications</h2>
+    <h2 class="plate-header plate-header--spaced">Certifications</h2>
     <!-- Certifications render from the CERTIFICATIONS array in script.js —
          add a new { name, url } object there to add a card here. -->
-    <div class="cert-grid" id="certGrid"></div>
+    <div class="lamp-list" id="certGrid"></div>
   </section>
 
   <!-- ============ EXPERIENCE ============ -->
-  <section class="section" id="experience">
-    <h2 class="section-title">Experience</h2>
+  <section class="plate" id="experience">
+    <h2 class="plate-header">Experience</h2>
 
     <!-- 🔧 UPDATE: edit dates, titles, and descriptions as your experience changes -->
-    <ol class="timeline">
-      <li class="timeline-item">
-        <div class="timeline-dot timeline-dot--work"></div>
-        <div class="timeline-body">
-          <p class="timeline-date">May 2026 — Present</p>
-          <h3 class="timeline-title">Engineer Intern</h3>
-          <p class="timeline-org">Ryzing Technologies, Staunton, VA</p>
-          <p class="timeline-desc">
+    <ol class="sequence">
+      <li class="sequence-item">
+        <div class="sequence-marker"></div>
+        <div class="sequence-body">
+          <p class="sequence-date">May 2026 — Present</p>
+          <h3 class="sequence-title">Engineer Intern</h3>
+          <p class="sequence-org">Ryzing Technologies, Staunton, VA</p>
+          <p class="sequence-desc">
             Assist in the design, development, and fabrication of textile and
             inflatable systems for military-related Army and Navy
             applications, including inflatable field hospitals and rescue
@@ -205,25 +218,25 @@
           </p>
         </div>
       </li>
-      <li class="timeline-item">
-        <div class="timeline-dot timeline-dot--edu"></div>
-        <div class="timeline-body">
-          <p class="timeline-date">2024 – 2028</p>
-          <h3 class="timeline-title">B.S., Integrated Science and Technology</h3>
-          <p class="timeline-org">James Madison University — Manufacturing Concentration, Global Supply Chain Management Minor</p>
-          <p class="timeline-desc">Member of Phi Kappa Psi Fraternity.</p>
+      <li class="sequence-item">
+        <div class="sequence-marker sequence-marker--dim"></div>
+        <div class="sequence-body">
+          <p class="sequence-date">2024 – 2028</p>
+          <h3 class="sequence-title">B.S., Integrated Science and Technology</h3>
+          <p class="sequence-org">James Madison University — Manufacturing Concentration, Global Supply Chain Management Minor</p>
+          <p class="sequence-desc">Member of Phi Kappa Psi Fraternity.</p>
         </div>
       </li>
     </ol>
   </section>
 
   <!-- ============ WHY ISAT ============ -->
-  <section class="section" id="why-isat">
-    <h2 class="section-title">Why ISAT</h2>
+  <section class="plate" id="why-isat">
+    <h2 class="plate-header">Why ISAT</h2>
 
     <div class="isat-grid">
-      <div class="isat-block">
-        <h3 class="isat-block-title">What the major is</h3>
+      <div class="panel-block">
+        <h3 class="panel-block-title">What the major is</h3>
         <p>
           Integrated Science and Technology (ISAT) is James Madison
           University's B.S. program built around solving real-world problems
@@ -245,8 +258,8 @@
       </div>
 
       <!-- 🔧 UPDATE: this is your own take — rewrite in your own words any time -->
-      <div class="isat-block">
-        <h3 class="isat-block-title">Why I chose it</h3>
+      <div class="panel-block">
+        <h3 class="panel-block-title">Why I chose it</h3>
         <p>
           When I started at JMU, I hadn't settled on one discipline yet.
           ISAT appealed to me because it let me explore a few different
@@ -259,8 +272,8 @@
       </div>
 
       <!-- 🔧 UPDATE: this is your own take — rewrite in your own words any time -->
-      <div class="isat-block">
-        <h3 class="isat-block-title">Skills it's given me</h3>
+      <div class="panel-block">
+        <h3 class="panel-block-title">Skills it's given me</h3>
         <p>
           JMU's ISAT program builds a broad foundation of scientific and
           technical skills, then lets you customize that foundation through
@@ -287,7 +300,9 @@
 <!-- ============ PROJECT DETAIL MODAL ============ -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal" role="dialog" aria-modal="true" aria-label="Project photo">
-    <button class="modal-close" id="modalClose" aria-label="Close project details">✕</button>
+    <button class="modal-close" id="modalClose" aria-label="Close project details">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+    </button>
 
     <div class="step-viewer" id="modalStepViewer">
       <h4 class="step-viewer-title" id="modalStepTitle"></h4>
@@ -300,14 +315,18 @@
         <pre class="step-viewer-code" id="modalStepCode"><code id="modalStepCodeText"></code></pre>
       </div>
       <div class="step-viewer-controls">
-        <button type="button" class="step-nav-btn" id="modalStepPrev" aria-label="Previous step">←</button>
+        <button type="button" class="step-nav-btn" id="modalStepPrev" aria-label="Previous step">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg>
+        </button>
         <div class="step-dots" id="modalStepDots"></div>
-        <button type="button" class="step-nav-btn" id="modalStepNext" aria-label="Next step">→</button>
+        <button type="button" class="step-nav-btn" id="modalStepNext" aria-label="Next step">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+        </button>
       </div>
     </div>
   </div>
 </div>
 
-<script src="script.js?v=18"></script>
+<script src="script.js?v=19"></script>
 </body>
 </html>

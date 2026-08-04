@@ -334,11 +334,11 @@ const ENGINEERING_PROJECTS = [
         table: {
           headers: ["Angle", "Measured", "Target", "Grade"],
           rows: [
-            ["Knee flexion (BDC)", "39°", "30-40°", "🟢"],
-            ["Torso from horizontal", "47°", "40-50°", "🟢"],
-            ["Elbow flexion", "4°", "15-30°", "🔴"],
-            ["Shoulder angle", "86°", "80-95°", "🟢"],
-            ["Hip angle (top)", "113°", "85-110°", "🟡"],
+            ["Knee flexion (BDC)", "39°", "30-40°", "good"],
+            ["Torso from horizontal", "47°", "40-50°", "good"],
+            ["Elbow flexion", "4°", "15-30°", "fail"],
+            ["Shoulder angle", "86°", "80-95°", "good"],
+            ["Hip angle (top)", "113°", "85-110°", "watch"],
           ],
         },
       },
@@ -346,6 +346,7 @@ const ENGINEERING_PROJECTS = [
   },
   {
     title: "Analog Line-Tracking Robot",
+    status: "pending",
     description:
       "An autonomous robot that follows a track using analog sensor " +
       "feedback.",
@@ -602,29 +603,47 @@ const CERTIFICATIONS = [
   { name: "Mandatory Controlled Unclassified Information", url: "images/cui-certificate.jpg", logo: "images/dod-logo.jpg" },
 ];
 
+// Known grade tokens a table cell can carry — rendered as a lamp dot
+// instead of raw text. Anything else in a cell renders as plain text.
+const GRADE_LAMPS = {
+  good: { className: '', label: 'Good' },
+  watch: { className: 'grade-cell--amber', label: 'Watch' },
+  fail: { className: 'grade-cell--red', label: 'Fail' },
+};
+
+function renderTableCell(cell) {
+  const grade = GRADE_LAMPS[cell];
+  if (!grade) return cell;
+  return `<span class="grade-cell ${grade.className}"><span class="lamp-dot" aria-hidden="true"></span>${grade.label}</span>`;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ---- Footer year ---- */
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  /* ---- Render certifications (name only, no issuer badge) ---- */
+  /* ---- Render certifications as annunciator lamps ---- */
   const certGrid = document.getElementById('certGrid');
   CERTIFICATIONS.forEach(cert => {
     const el = document.createElement(cert.url ? 'a' : 'div');
-    el.className = 'cert-card';
+    el.className = 'lamp-card';
     if (cert.url) {
       el.href = cert.url;
       el.target = '_blank';
       el.rel = 'noopener';
     }
+    const dot = document.createElement('span');
+    dot.className = 'lamp-dot';
+    dot.setAttribute('aria-hidden', 'true');
+    el.appendChild(dot);
     if (cert.logo) {
       const logoImg = document.createElement('img');
       logoImg.src = cert.logo;
       logoImg.alt = '';
       logoImg.loading = 'lazy';
       logoImg.decoding = 'async';
-      logoImg.className = 'cert-card-logo';
+      logoImg.className = 'lamp-card-logo';
       el.appendChild(logoImg);
     }
     const nameSpan = document.createElement('span');
@@ -684,13 +703,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     modalStepDesc.textContent = step.description;
 
-    // Optional data table — e.g. { headers: [...], rows: [[...], ...] }
+    // Optional data table — e.g. { headers: [...], rows: [[...], ...] }.
+    // A cell whose value is one of the known grade tokens renders as a
+    // lamp dot + label instead of raw text (see GRADE_LAMPS below).
     if (step.table && step.table.rows && step.table.rows.length) {
       const theadHtml = step.table.headers
         ? `<thead><tr>${step.table.headers.map(h => `<th>${h}</th>`).join('')}</tr></thead>`
         : '';
       const tbodyHtml = `<tbody>${step.table.rows
-        .map(row => `<tr>${row.map(cell => `<td>${cell}</td>`).join('')}</tr>`)
+        .map(row => `<tr>${row.map(cell => `<td>${renderTableCell(cell)}</td>`).join('')}</tr>`)
         .join('')}</tbody>`;
       modalStepTable.innerHTML = `<table>${theadHtml}${tbodyHtml}</table>`;
       modalStepTable.style.display = 'block';
@@ -749,24 +770,33 @@ document.addEventListener('DOMContentLoaded', () => {
     modalStepVideo.pause();
   }
 
+  const ARROW_RIGHT_ICON = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>';
+
   function renderProjectGrid(gridEl, projects) {
     projects.forEach(project => {
       const card = document.createElement('button');
       card.type = 'button';
-      card.className = 'project-card';
+      card.className = 'module-card';
       const thumbHtml = project.thumbnail
-        ? `<img class="project-card-thumb" src="${project.thumbnail}" alt="${project.title}" loading="lazy" decoding="async">`
+        ? `<img class="module-card-thumb" src="${project.thumbnail}" alt="${project.title}" loading="lazy" decoding="async">`
         : '';
       const tagHtml = project.tag
-        ? `<span class="project-card-tag">${project.tag}</span>`
+        ? `<span class="module-card-tag">${project.tag}</span>`
         : '';
+      const isPending = project.status === 'pending';
+      const statusHtml = `
+        <span class="module-status${isPending ? ' module-status--pending' : ''}">
+          <span class="lamp-dot" aria-hidden="true"></span>${isPending ? 'In Progress' : 'Documented'}
+        </span>
+      `;
       card.innerHTML = `
+        ${statusHtml}
         ${thumbHtml}
-        <div class="project-card-body">
+        <div class="module-card-body">
           ${tagHtml}
-          <span class="project-card-title">${project.title}</span>
-          <span class="project-card-desc">${project.description}</span>
-          <span class="project-card-cta">View details →</span>
+          <span class="module-card-title">${project.title}</span>
+          <span class="module-card-desc">${project.description}</span>
+          <span class="module-card-cta">View details ${ARROW_RIGHT_ICON}</span>
         </div>
       `;
       card.addEventListener('click', () => openModal(project));
@@ -774,8 +804,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const placeholder = document.createElement('div');
-    placeholder.className = 'project-card project-card--placeholder';
-    placeholder.innerHTML = `<span>More projects coming soon</span>`;
+    placeholder.className = 'module-card module-card--placeholder';
+    placeholder.innerHTML = `<span>More modules coming soon</span>`;
     gridEl.appendChild(placeholder);
   }
 
@@ -793,32 +823,25 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'ArrowLeft') goToStep(activeStepIndex - 1);
   });
 
-  /* ---- Nav: sliding indicator, explicit smooth scroll, scroll-spy ---- */
-  const tabButtons = document.querySelectorAll('.tab-btn');
-  const sections = document.querySelectorAll('.section');
-  const indicator = document.querySelector('.tab-indicator');
-  const navHeight = document.querySelector('.tabs').offsetHeight;
+  /* ---- Nav: each switch lights up on its own (no sliding indicator),
+     explicit smooth scroll, scroll-spy ---- */
+  const switchButtons = document.querySelectorAll('.switch');
+  const sections = document.querySelectorAll('section.plate');
+  const navHeight = document.querySelector('.switchboard').offsetHeight;
 
   let isClickScrolling = false;
   let clickScrollTimeout = null;
 
-  function moveIndicator(btn) {
-    if (!btn) return;
-    indicator.style.width = `${btn.offsetWidth}px`;
-    indicator.style.transform = `translateX(${btn.offsetLeft - 5}px)`;
-  }
-
   function setActive(id) {
-    tabButtons.forEach(b => {
+    switchButtons.forEach(b => {
       b.classList.toggle('is-active', b.dataset.section === id);
     });
-    moveIndicator(document.querySelector('.tab-btn.is-active'));
   }
 
-  // Explicit smooth scroll on click, with the active tab updated
-  // immediately (rather than waiting on scroll-spy), so the label
+  // Explicit smooth scroll on click, with the active switch lit
+  // immediately (rather than waiting on scroll-spy), so the lamp
   // never sits in a half-updated state while the page is moving.
-  tabButtons.forEach(btn => {
+  switchButtons.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       const targetId = btn.dataset.section;
@@ -851,9 +874,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     sections.forEach(section => observer.observe(section));
   }
-
-  window.addEventListener('load', () => moveIndicator(document.querySelector('.tab-btn.is-active')));
-  window.addEventListener('resize', () => moveIndicator(document.querySelector('.tab-btn.is-active')));
-  moveIndicator(document.querySelector('.tab-btn.is-active'));
 
 });
