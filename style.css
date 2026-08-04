@@ -621,6 +621,11 @@ a.cert-card:hover { border-color: var(--signal-green); }
   overflow: hidden;
 }
 
+/* Permanent dark backdrop for the photo/video area — never fades, so
+   crossfading the media inside it reveals dark, not the light panel
+   behind, instead of flashing white on every step change */
+.step-viewer-media { background: #000; }
+
 /* Step-to-step crossfade, toggled by JS via .is-transitioning on the
    viewer while it swaps content underneath */
 .step-viewer-title,
