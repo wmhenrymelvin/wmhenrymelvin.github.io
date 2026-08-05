@@ -189,6 +189,29 @@ const ENGINEERING_PROJECTS = [
           "standardized the process to make it faster and more " +
           "consistent going forward.",
       },
+      {
+        title: "Circumferential Straps, Sewn",
+        images: [
+          "images/swift-circumferential-strap-unfolded.jpg",
+          "images/swift-circumferential-strap-buckle.jpg",
+        ],
+        description:
+          "A closer look at the circumferentials themselves, from a " +
+          "single sewn strip through to a finished strap fitted with its " +
+          "buckle hardware — the same repeatable, sewable pattern " +
+          "referenced above, made real.",
+      },
+      {
+        title: "The Finished CCP & CPU",
+        images: [
+          "images/swift-ccp-cpu-assembled.jpg",
+          "images/swift-ccp-multi-module.jpg",
+        ],
+        description:
+          "The CPU stretcher and CCP shelter in the shop, inflated and " +
+          "assembled — one of the 5 complete sets from this build cycle, " +
+          "and the multi-module CCP docking configuration described above.",
+      },
     ],
   },
   {
