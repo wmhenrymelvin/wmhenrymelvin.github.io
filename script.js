@@ -149,57 +149,53 @@ const ENGINEERING_PROJECTS = [
         images: ["images/swift-ccp-product.png", "images/swift-cpu-product.png"],
         // 🔧 UPDATE: swap in your own SWIFT photos here whenever you have them
         description:
-          "SWIFT stands for Severe Weather Infield Transport. It's built " +
-          "around two connected components, both made of air beams — " +
-          "inflatable structural tubes — so they pack down small in " +
-          "storage but hold real structural load once inflated. On the " +
-          "left, the CCP (Casualty Collection Point): a self-erecting " +
-          "shelter that sets up in under 45 seconds with only 1-2 " +
-          "operators, docks up to four CPUs at once, and is rated from " +
-          "-40°F to +120°F with a 100 mph wind-resistance rating. On the " +
-          "right, the CPU (Casualty Protection Unit): an individual " +
-          "inflatable stretcher that deploys in under 45 seconds — even " +
-          "with a patient already on the ground — weighs about 15.5 lbs, " +
-          "and supports over 400 lbs of load. Its suspended hammock holds " +
-          "the torso at roughly a 30° angle to reduce aspiration risk, " +
-          "with 5 layers of insulation and a waterproof outer skin. The " +
-          "two aren't separate products but one workflow: a CPU deploys " +
-          "directly beneath an injured person at the point of injury, " +
-          "then transports and docks into a CCP, keeping thermal and " +
-          "environmental protection intact the whole time instead of " +
-          "exposing the patient during transfer. Because a single CCP can " +
-          "dock up to four CPUs, this scales cleanly from one casualty to " +
-          "organized multi-patient triage.",
+          "SWIFT stands for Severe Weather Infield Transport, built around " +
+          "two connected components, both made of air beams — inflatable " +
+          "structural tubes that pack down small in storage but hold real " +
+          "structural load once inflated. On the left, the CCP (Casualty " +
+          "Collection Point): a self-erecting shelter that sets up in " +
+          "under 45 seconds with only 1-2 operators, docks up to four " +
+          "CPUs at once, and is rated -40°F to +120°F with a 100 mph " +
+          "wind-resistance rating. On the right, the CPU (Casualty " +
+          "Protection Unit): an individual inflatable stretcher that " +
+          "deploys in under 45 seconds — even with a patient already on " +
+          "the ground — weighs about 15.5 lbs, and supports over 400 lbs " +
+          "of load, with a hammock that holds the torso at roughly a 30° " +
+          "angle to reduce aspiration risk. A CPU deploys directly beneath " +
+          "an injured person at the point of injury, then transports and " +
+          "docks into a CCP, keeping protection intact through the whole " +
+          "transfer — and since one CCP docks up to four CPUs, this scales " +
+          "from a single casualty to organized multi-patient triage.",
       },
       {
-        title: "Airbeams & Circumferentials",
+        title: "Air Beams",
         image: "images/swift-airbeam-components.jpg",
         description:
-          "My role covered a few stages of this build. I helped " +
-          "fabricate several of the air beams themselves, and documented " +
-          "the process step by step with written instructions and photos " +
-          "so it could be repeated consistently. I also helped design the " +
-          "circumferentials — the straps that wrap around the CCP and " +
-          "CPU — with an eye toward making them easy to manufacture " +
-          "repeatably, then rebuilt them in Onshape and produced " +
-          "engineering drawings in isometric, wrapped, and flat views. " +
-          "From there I sewed the individual pieces together into " +
-          "finished straps and fitted them onto the CCP and CPU. Over the " +
-          "course of the project we built 5 complete sets and " +
-          "standardized the process to make it faster and more " +
-          "consistent going forward.",
+          "I helped fabricate several of the air beams — the inflatable " +
+          "tubes that give both the CCP and CPU their structural rigidity " +
+          "once inflated — and documented the fabrication process step by " +
+          "step with written instructions and photos, so it could be " +
+          "handed off and repeated consistently by whoever built the next " +
+          "set.",
       },
       {
-        title: "Circumferential Straps, Sewn",
+        title: "Circumferential Straps",
         images: [
           "images/swift-circumferential-strap-unfolded.jpg",
           "images/swift-circumferential-strap-buckle.jpg",
         ],
         description:
-          "A closer look at the circumferentials themselves, from a " +
-          "single sewn strip through to a finished strap fitted with its " +
-          "buckle hardware — the same repeatable, sewable pattern " +
-          "referenced above, made real.",
+          "The circumferentials are the straps that wrap around the CCP " +
+          "and CPU, cinching the air beams into their rated shape and " +
+          "holding the whole assembly together. I helped design them for " +
+          "repeatable manufacturing, rebuilt them in Onshape, and produced " +
+          "engineering drawings in isometric, wrapped, and flat views. " +
+          "From there I sewed the individual pieces into finished straps " +
+          "myself — shown here mid-construction and as a finished piece " +
+          "with its buckle hardware fitted — and fitted them onto the CCP " +
+          "and CPU. Over the course of the project we built 5 complete " +
+          "sets and standardized the process to make it faster and more " +
+          "consistent going forward.",
       },
       {
         title: "The Finished CCP & CPU",
@@ -208,9 +204,11 @@ const ENGINEERING_PROJECTS = [
           "images/swift-ccp-multi-module.jpg",
         ],
         description:
-          "The CPU stretcher and CCP shelter in the shop, inflated and " +
-          "assembled — one of the 5 complete sets from this build cycle, " +
-          "and the multi-module CCP docking configuration described above.",
+          "The result: a CPU stretcher and CCP shelter, inflated and " +
+          "assembled in the shop — one of the 5 complete sets I helped " +
+          "build and standardize. On the right, the CCP's multi-module " +
+          "docking configuration, the same setup that lets a single " +
+          "shelter take in up to four CPUs at once.",
       },
     ],
   },
@@ -939,8 +937,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { passive: true });
 
   // Keep the indicator aligned through font load, resize, and wrap changes.
+  // `window.load` alone isn't enough: the nav labels use Martian Mono with
+  // `font-display: swap`, so the browser paints a fallback font first and
+  // swaps in the real one whenever its download finishes - which can land
+  // well after `load` fires. Without re-measuring at that point, the
+  // indicator keeps the fallback font's (wider) button width baked into its
+  // transform, so it visibly overhangs into the next switch once the real,
+  // narrower font swaps in. `document.fonts.ready` is the correct signal
+  // for "every font actually used on this page has resolved."
   window.addEventListener('load', () => moveIndicator(document.querySelector('.switch.is-active')));
   window.addEventListener('resize', () => moveIndicator(document.querySelector('.switch.is-active')));
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(() => moveIndicator(document.querySelector('.switch.is-active')));
+  }
   moveIndicator(document.querySelector('.switch.is-active'));
 
   /* ---- Reveal on scroll (and once, on load, for the hero) ---- */
