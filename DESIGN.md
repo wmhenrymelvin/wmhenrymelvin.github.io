@@ -51,19 +51,28 @@ room — the brief's own call, not a default.
 
 ## Type
 
-- **Oswald** (weights 500–700) — headings, project/experience/section
-  titles. A middle pass swapped this for Bricolage Grotesque when Oswald's
-  all-caps tracking read as "robotic"; the follow-up review kept Oswald
-  itself (reverted on request) but dropped the all-caps treatment that
-  actually caused the complaint — big display text (hero name, section
-  headers, project/experience titles) has no `text-transform: uppercase`
-  now, title case throughout.
-- **Archivo** (400–700) — body copy and UI text.
-- **Martian Mono** (weight 600) — small UI-chrome labels specifically: nav
-  switches, readout labels, project tags, the grade table's header row,
-  experience dates. Everything that carries `--accent` color, basically.
-  Picked for character at small sizes without reaching for JetBrains Mono
-  or IBM Plex Mono, both flagged as overused defaults.
+- **Space Grotesk** (weights 500–700) — headings, project/experience/section
+  titles. Third heading font: started as Oswald, swapped mid-project to
+  Bricolage Grotesque when Oswald's all-caps tracking read as "robotic,"
+  reverted back to Oswald (with uppercase dropped instead, title case
+  throughout) — then, on a later request to explore "big letters, clean
+  font" and see what comparable professional/engineering portfolios use,
+  compared Oswald against Space Grotesk, Inter Tight, and General Sans
+  live (same hero/heading/card content, one candidate swapped at a time)
+  and chose Space Grotesk: geometric and confident at display sizes like
+  Oswald was, but without the condensed/robotic feel, and with a slight
+  technical edge that pairs naturally with the Martian Mono labels
+  elsewhere instead of reading as a generic SaaS heading font.
+- **Archivo** (400–700) — body copy and UI text. Also now the font for
+  `.module-card-cta` ("View details →"), moved off Martian Mono at the
+  same time — a monospace label suited the small UI-chrome tags it was
+  designed for, but on a call-to-action link it read more like a stray
+  bit of code than a clickable prompt.
+- **Martian Mono** (weight 600) — small UI-chrome labels: nav switches,
+  readout labels, project tags, the grade table's header row, experience
+  dates. Everything that carries `--accent` color and isn't a
+  call-to-action. Picked for character at small sizes without reaching
+  for JetBrains Mono or IBM Plex Mono, both flagged as overused defaults.
 - **JetBrains Mono** (400–600) — reserved for the one place letterform
   quirks actually hurt: the Python code blocks in the data-analytics
   modals. Kept plain and highly legible there on purpose, distinct from
