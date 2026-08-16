@@ -36,11 +36,11 @@
   src: url('fonts/martian-mono-variable.woff2') format('woff2');
 }
 @font-face {
-  font-family: 'Space Grotesk';
+  font-family: 'IBM Plex Sans';
   font-style: normal;
-  font-weight: 500 700;
+  font-weight: 700;
   font-display: swap;
-  src: url('fonts/space-grotesk-variable.woff2') format('woff2');
+  src: url('fonts/ibm-plex-sans-700.woff2') format('woff2');
 }
 :root {
   /* Ground / panel surfaces — brushed-aluminum light gray, never stark white */
@@ -76,7 +76,7 @@
   --signal-red: #C4392A;
   --signal-red-bright: #E15D4C;
 
-  --font-display: 'Space Grotesk', 'Arial Narrow', sans-serif;
+  --font-display: 'IBM Plex Sans', 'Arial Narrow', sans-serif;
   --font-body: 'Archivo', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
   --font-label: 'Martian Mono', 'JetBrains Mono', monospace;

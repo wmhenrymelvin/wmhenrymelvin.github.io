@@ -51,18 +51,23 @@ room — the brief's own call, not a default.
 
 ## Type
 
-- **Space Grotesk** (weights 500–700) — headings, project/experience/section
-  titles. Third heading font: started as Oswald, swapped mid-project to
+- **IBM Plex Sans** (weight 700) — headings, project/experience/section
+  titles. Fourth heading font: started as Oswald, swapped mid-project to
   Bricolage Grotesque when Oswald's all-caps tracking read as "robotic,"
   reverted back to Oswald (with uppercase dropped instead, title case
-  throughout) — then, on a later request to explore "big letters, clean
-  font" and see what comparable professional/engineering portfolios use,
+  throughout) — then, on a request to explore "big letters, clean font"
+  and see what comparable professional/engineering portfolios use,
   compared Oswald against Space Grotesk, Inter Tight, and General Sans
-  live (same hero/heading/card content, one candidate swapped at a time)
-  and chose Space Grotesk: geometric and confident at display sizes like
-  Oswald was, but without the condensed/robotic feel, and with a slight
-  technical edge that pairs naturally with the Martian Mono labels
-  elsewhere instead of reading as a generic SaaS heading font.
+  live and picked Space Grotesk — which then had to be reverted on a
+  follow-up request to specifically avoid Inter/Geist/Space Grotesk as
+  overused "AI-generated-looking" defaults. Re-ran the comparison against
+  General Sans and IBM Plex Sans instead and picked IBM Plex Sans: same
+  big/clean/confident quality at display sizes, but with more distinct,
+  slightly technical letterforms that tie back to the instrument-panel
+  concept on purpose (IBM Plex was designed for technical/engineering
+  communication) rather than reading as a generic trendy portfolio pick.
+  This is the display font only — see Martian Mono below for why IBM Plex
+  Mono specifically was passed over for small UI labels.
 - **Archivo** (400–700) — body copy and UI text. Also now the font for
   `.module-card-cta` ("View details →"), moved off Martian Mono at the
   same time — a monospace label suited the small UI-chrome tags it was

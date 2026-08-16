@@ -393,7 +393,6 @@ const ENGINEERING_PROJECTS = [
 const DATA_PROJECTS = [
   {
     title: "NYC Airbnb Market Analysis",
-    tag: "Cleaning",
     description:
       "Cleaned messy real-world rental listing data and analyzed it to " +
       "find pricing trends across New York City.",
@@ -496,7 +495,6 @@ listings['price'].max()`,
   },
   {
     title: "Word Frequency Analysis — Classic Novels",
-    tag: "Scraping",
     description:
       "Pulled the full text of a novel straight from a website and " +
       "counted word frequency to find its most common meaningful words.",
