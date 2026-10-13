@@ -217,38 +217,29 @@ const ENGINEERING_PROJECTS = [
     thumbnail: "images/isas-hanging-forklift-cage.jpg",
     // 🔧 UPDATE: fill in what ISAS stands for once you have it
     description:
-      "Testing and support-structure design for a military ACV, using " +
-      "deployable air beams to keep it from tipping over in shallow " +
-      "surf.",
+      "Scale-model testing in support of a stability project for a " +
+      "military amphibious vehicle.",
     steps: [
       {
         title: "What It Is",
         image: "images/isas-model-shop.jpg",
         description:
-          "Our team was tasked with designing supports for an ACV " +
-          "(Amphibious Combat Vehicle) for the military. The problem: as " +
-          "an ACV transitions from ship to sea to beach, it passes " +
-          "through a 3-5 ft water depth range where it has a real chance " +
-          "of tipping over. Our solution was a set of air beams mounted " +
-          "on the sides of the vehicle that deploy automatically — " +
-          "triggered by a sensor on the ACV that tracks its position — " +
-          "right as it starts to tip, to stop it from going over. To " +
-          "test the concept, our team built a 1/8-scale model of the ACV " +
-          "out of metal, complete with scaled-down support beams " +
-          "matching the full-size design.",
+          "ISAS is a vehicle stability project for the military, and our " +
+          "team supported it by building and testing a 1/8-scale metal " +
+          "model of the vehicle. I worked on the testing side: measuring " +
+          "how the model behaves so the results could be checked against " +
+          "reference figures before the model went into the wave pool.",
       },
       {
         title: "Building the Model",
         image: "images/isas-model-full-view.jpg",
         description:
-          "Building an accurate scale model meant more than just getting " +
-          "the shape right — the weight distribution had to be " +
-          "realistic too. We added weights both inside the hull and on " +
-          "the lid to replicate the difference between crew-loaded " +
-          "weight and gross vehicle weight, since where that weight sits " +
-          "changes how the vehicle actually behaves in water. Without " +
-          "that distinction, the model's tipping behavior wouldn't " +
-          "reliably reflect the full-size ACV's.",
+          "Building an accurate scale model meant matching the weight " +
+          "distribution as well as the shape. We added weights inside the " +
+          "hull and on the lid to represent both crew-loaded weight and " +
+          "gross vehicle weight, because where the weight sits changes " +
+          "how the vehicle behaves. Without that, the model's results " +
+          "wouldn't carry over to the full-size vehicle.",
       },
       {
         title: "Finding the Center of Gravity",
@@ -259,8 +250,8 @@ const ENGINEERING_PROJECTS = [
           "checked it carefully to confirm there was no tilt once it " +
           "settled. A model hanging perfectly level, with no lean in any " +
           "direction, confirms the suspension point lines up with the " +
-          "center of gravity — a necessary reference point before any of " +
-          "the rotational testing that followed.",
+          "center of gravity. That is the reference point needed before " +
+          "any of the rotational testing that followed.",
       },
       {
         title: "My Role: Testing",
@@ -268,13 +259,11 @@ const ENGINEERING_PROJECTS = [
         description:
           "My job on this project was testing. Once the model hung level, " +
           "we built a torsion pendulum around it to measure its moment of " +
-          "inertia and radius of gyration — properties that describe how " +
-          "the vehicle resists and responds to rotation. Those results " +
-          "get compared directly against the military's own figures for " +
-          "the full-size ACV, both to validate the scale model itself and " +
-          "to serve as a reference for further testing down the line, " +
-          "including the wave pool testing we ran afterward with the " +
-          "miniature air beam attached.",
+          "inertia and radius of gyration, which describe how the model " +
+          "resists and responds to rotation. We repeated the measurements " +
+          "at crew-loaded and gross vehicle weight, then checked the " +
+          "results against reference figures to validate the model. " +
+          "Afterward we used it for wave pool testing.",
       },
     ],
   },
