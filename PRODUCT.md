@@ -16,7 +16,7 @@ Engineering recruiters and hiring managers evaluating Henry Melvin for internshi
 
 ## Product Purpose
 
-Personal portfolio for Henry Melvin, a sophomore studying Integrated Science and Technology (Manufacturing concentration, Global Supply Chain Management minor) at James Madison University. Exists to land a Summer 2027 engineering internship by showing real, hands-on project work, current internship experience, and certifications.
+Personal portfolio for Henry Melvin, a junior studying Integrated Science and Technology (Manufacturing concentration, Global Supply Chain Management minor) at James Madison University. Exists to land a Summer 2027 engineering internship by showing real, hands-on project work, current internship experience, and certifications.
 
 ## Positioning
 
@@ -24,7 +24,7 @@ A hands-on manufacturing/engineering student with real fabrication and testing e
 
 ## Operating Context
 
-JMU ISAT program (College of Integrated Science and Engineering). Current internship: Engineer Intern at Ryzing Technologies (Staunton, VA), designing/fabricating textile and inflatable systems for military-related Army/Navy applications, using CAD, CNC machines, mills, lathes, and industrial sewing equipment. Prior project work used Onshape CAD, Arduino/servo control, and Python (pandas/matplotlib/NLTK) for data analysis.
+JMU ISAT program (College of Integrated Science and Engineering). Completed internship (May to August 2026): Engineering Intern at Ryzing Technologies (Staunton, VA), designing/fabricating textile and inflatable systems for military-related Army/Navy applications, using CAD, CNC machines, mills, lathes, and industrial sewing equipment. Prior project work used Onshape CAD, Arduino/servo control, and Python (pandas/matplotlib/NLTK) for data analysis.
 
 ## Capabilities and Constraints
 
