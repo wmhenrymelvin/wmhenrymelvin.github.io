@@ -140,16 +140,16 @@ const ENGINEERING_PROJECTS = [
     ],
   },
   {
-    title: "SWIFT",
+    title: "SWIFTS",
     thumbnail: "images/swift-multi-cpu-docking.jpg",
-    description: "Severe Weather Infield Transport",
+    description: "Severe Weather In-field Treatment System",
     steps: [
       {
         title: "What It Is",
         images: ["images/swift-ccp-product.png", "images/swift-cpu-product.png"],
         // 🔧 UPDATE: swap in your own SWIFT photos here whenever you have them
         description:
-          "SWIFT stands for Severe Weather Infield Transport, built around " +
+          "SWIFTS stands for Severe Weather In-field Treatment System, built around " +
           "two connected components, both made of air beams — inflatable " +
           "structural tubes that pack down small in storage but hold real " +
           "structural load once inflated. On the left, the CCP (Casualty " +
