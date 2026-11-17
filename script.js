@@ -627,6 +627,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  /* ---- Section counts (e.g. "05" next to a heading) ---- */
+  const pad2 = n => String(n).padStart(2, '0');
+  const setText = (id, text) => { const el = document.getElementById(id); if (el) el.textContent = text; };
+  setText('engineeringCount', pad2(ENGINEERING_PROJECTS.length));
+  setText('dataCount', pad2(DATA_PROJECTS.length));
+  setText('certCount', String(CERTIFICATIONS.length));
+
   /* ---- Render certifications ---- */
   const certGrid = document.getElementById('certGrid');
   CERTIFICATIONS.forEach(cert => {
@@ -667,6 +674,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalStepPrev = document.getElementById('modalStepPrev');
   const modalStepNext = document.getElementById('modalStepNext');
   const modalStepViewer = document.getElementById('modalStepViewer');
+  const modalProjectTitle = document.getElementById('modalProjectTitle');
+  const modalStepCount = document.getElementById('modalStepCount');
 
   let activeSteps = [];
   let activeStepIndex = 0;
@@ -676,6 +685,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!step) return;
 
     modalStepTitle.textContent = step.title || '';
+    if (modalStepCount) {
+      modalStepCount.textContent = activeSteps.length > 1
+        ? `Step ${activeStepIndex + 1} of ${activeSteps.length}`
+        : '';
+    }
 
     // Always pause and clear the video first so a playing clip doesn't
     // keep making noise/progress after you've stepped away from it.
@@ -764,6 +778,7 @@ document.addEventListener('DOMContentLoaded', () => {
   modalStepNext.addEventListener('click', () => goToStep(activeStepIndex + 1));
 
   function openModal(project) {
+    if (modalProjectTitle) modalProjectTitle.textContent = project.title || '';
     if (project.steps && project.steps.length) {
       activeSteps = project.steps;
       activeStepIndex = 0;
@@ -783,35 +798,60 @@ document.addEventListener('DOMContentLoaded', () => {
     modalStepVideo.pause();
   }
 
-  const ARROW_RIGHT_ICON = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>';
+  const ARROW_ICON = '<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3.5 10.5l7-7M5 3.5h5.5V9"/></svg>';
+
+  // Shown on a card when a project has no photo at all (thumbnail or step image).
+  const NO_PHOTO_ART = `
+    <svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <path d="M-20 190 C 60 190, 80 70, 170 80 S 260 210, 330 150 S 400 60, 440 70" fill="none" stroke="rgba(246,245,241,.14)" stroke-width="22" stroke-linecap="round"/>
+      <path d="M-20 190 C 60 190, 80 70, 170 80 S 260 210, 330 150 S 400 60, 440 70" fill="none" stroke="#141412" stroke-width="6" stroke-linecap="round"/>
+      <path d="M-20 190 C 60 190, 80 70, 170 80 S 260 210, 330 150 S 400 60, 440 70" fill="none" stroke="rgba(246,245,241,.5)" stroke-width="1" stroke-dasharray="2 7"/>
+      <circle cx="250" cy="168" r="9" fill="#E4572E"/>
+      <circle cx="250" cy="168" r="20" fill="none" stroke="rgba(228,87,46,.35)"/>
+    </svg>
+    <span class="lbl">No photo yet</span>`;
+
+  // Card image: the project's thumbnail, else the first image any step has.
+  function cardImage(project) {
+    if (project.thumbnail) return { src: project.thumbnail, fromStep: false };
+    for (const step of project.steps || []) {
+      if (step.image) return { src: step.image, fromStep: true };
+      if (step.images && step.images.length) return { src: step.images[0], fromStep: true };
+    }
+    return null;
+  }
 
   function renderProjectGrid(gridEl, projects) {
-    projects.forEach(project => {
+    if (!gridEl) return;
+    projects.forEach((project, i) => {
       const card = document.createElement('button');
       card.type = 'button';
-      card.className = 'module-card';
-      const thumbHtml = project.thumbnail
-        ? `<img class="module-card-thumb" src="${project.thumbnail}" alt="${project.title}" loading="lazy" decoding="async">`
-        : '';
-      const tagHtml = project.tag
-        ? `<span class="module-card-tag">${project.tag}</span>`
-        : '';
+      card.className = 'p shell';
+      const img = cardImage(project);
+      const mediaHtml = img
+        ? `<span class="img${img.fromStep ? ' img--chart' : ''}"><img src="${img.src}" alt="" loading="lazy" decoding="async"></span>`
+        : `<span class="img img--none">${NO_PHOTO_ART}</span>`;
       card.innerHTML = `
-        ${thumbHtml}
-        <div class="module-card-body">
-          ${tagHtml}
-          <span class="module-card-title">${project.title}</span>
-          <span class="module-card-desc">${project.description}</span>
-          <span class="module-card-cta">View details ${ARROW_RIGHT_ICON}</span>
-        </div>
+        <span class="core">
+          ${mediaHtml}
+          <span class="txt">
+            <span>
+              <span class="n">${pad2(i + 1)}</span>
+              <span class="t">${project.title}</span>
+              <span class="d">${project.description}</span>
+            </span>
+            <span class="arrow">${ARROW_ICON}</span>
+          </span>
+        </span>
       `;
+      card.setAttribute('aria-label', `${project.title}: open the full build record`);
       card.addEventListener('click', () => openModal(project));
       gridEl.appendChild(card);
     });
 
     const placeholder = document.createElement('div');
-    placeholder.className = 'module-card module-card--placeholder';
-    placeholder.innerHTML = `<span>More modules coming soon</span>`;
+    placeholder.className = 'soon';
+    placeholder.textContent = 'More projects coming soon';
     gridEl.appendChild(placeholder);
   }
 
@@ -834,7 +874,24 @@ document.addEventListener('DOMContentLoaded', () => {
      scroll, scroll-spy ---- */
   const switchButtons = document.querySelectorAll('.switch');
   const sections = document.querySelectorAll('section.plate');
-  const navHeight = document.querySelector('.switchboard').offsetHeight;
+  const navEl = document.getElementById('nav');
+  const navHeight = navEl.getBoundingClientRect().bottom;
+
+  /* ---- Mobile menu sheet ---- */
+  const burger = document.getElementById('burger');
+  const sheet = document.getElementById('sheet');
+  function toggleSheet(open) {
+    sheet.classList.toggle('on', open);
+    navEl.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', String(open));
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    sheet.setAttribute('aria-hidden', String(!open));
+  }
+  if (burger && sheet) {
+    burger.addEventListener('click', () => toggleSheet(!sheet.classList.contains('on')));
+    sheet.addEventListener('click', (e) => { if (e.target.closest('a')) toggleSheet(false); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && sheet.classList.contains('on')) toggleSheet(false); });
+  }
   const navIndicator = document.querySelector('.nav-indicator');
 
   let isClickScrolling = false;
@@ -854,8 +911,11 @@ document.addEventListener('DOMContentLoaded', () => {
       // translateY too, not just translateX: when the switch bank wraps
       // to a second row, the active switch isn't necessarily in the
       // same row the indicator's static CSS position would assume.
-      const y = btn.offsetTop + btn.offsetHeight + 3;
-      navIndicator.style.transform = `translate(${btn.offsetLeft}px, ${y}px) scaleX(${btn.offsetWidth})`;
+      // A short orange bar tucked inside the bottom of the active pill.
+      const inset = 14;
+      const y = btn.offsetTop + btn.offsetHeight - 6;
+      const width = Math.max(btn.offsetWidth - inset * 2, 8);
+      navIndicator.style.transform = `translate(${btn.offsetLeft + inset}px, ${y}px) scaleX(${width})`;
       indicatorFrame = null;
     });
   }
