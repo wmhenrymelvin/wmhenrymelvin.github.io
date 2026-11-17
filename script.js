@@ -269,7 +269,7 @@ const ENGINEERING_PROJECTS = [
   },
   {
     title: "AI Bike Fit Analyzer",
-    thumbnail: "images/bike-fit-thumbnail-v2.jpg",
+    thumbnail: "images/bike-fit-diagram.svg?v=2",
     description:
       "An AI tool that grades a road bike fit from a single phone video.",
     steps: [

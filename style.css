@@ -284,8 +284,7 @@ h1 .dot { color: var(--signal); }
 .btn:hover i { transform: translate(2px, -1px); }
 .btn svg, .arrow svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
 
-/* Capped near the headshot file's own width (560px) so it stays sharp on high-DPI screens */
-.portrait { position: relative; width: 100%; max-width: 19rem; justify-self: end; }
+.portrait { position: relative; width: 100%; max-width: 26.5rem; justify-self: end; }
 .portrait-frame { --r: 2.5rem; --pad: .5rem; transform: rotate(1.5deg); }
 .portrait-frame .core { aspect-ratio: 4 / 5; }
 .portrait-frame img { width: 100%; height: 100%; object-fit: cover; object-position: center 22%; }
@@ -378,6 +377,7 @@ h2 {
 .p:hover .img img { transform: scale(1.04); }
 .p .img--chart { background: #fff; }
 .p .img--chart img { object-fit: contain; padding: 1rem; }
+/* drawn diagrams (SVG thumbnails) scale to fit so their labels never crop */ .p .img:has(img[src*=".svg"]) { background: #EFEEE9; } .p .img img[src*=".svg"] { object-fit: contain; }
 .p .img--none { background: var(--ink); }
 .p .img--none svg { position: absolute; inset: 0; width: 100%; height: 100%; }
 .p .img--none .lbl { position: absolute; left: 1.5rem; top: 1.25rem; color: rgb(246 245 241 / .6); font-size: .8rem; }
@@ -499,7 +499,7 @@ a.cert-card:hover { background: var(--bg); }
 .job.dark .job-desc, .job.dark .when { color: rgb(246 245 241 / .68); }
 
 /* ---------- why ISAT ---------- */
-.isat { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 3rem; align-items: start; }
+.isat .core { padding: clamp(1.75rem, 4vw, 3rem); }
 .isat-copy {
   font-family: var(--display);
   font-weight: 500;
@@ -673,7 +673,7 @@ a.cert-card:hover { background: var(--bg); }
   #engineeringProjectGrid .p:nth-child(1) { grid-column: 1 / -1; }
   #engineeringProjectGrid .p:nth-child(1) .img { min-height: 22rem; }
   .bento--even .p, .bento--even .soon { grid-column: span 6; }
-  .isat { grid-template-columns: 1fr; gap: 2rem; }
+  .summary .core, .isat .core { padding: 1.75rem; }
   .facts { grid-template-columns: repeat(3, minmax(0, 1fr)); justify-content: stretch; }
   .skills-grid { grid-template-columns: 1fr; }
 }
@@ -694,7 +694,7 @@ a.cert-card:hover { background: var(--bg); }
   .head { flex-direction: column; align-items: flex-start; gap: .75rem; margin-bottom: 1.75rem; }
   .summary-copy { font-size: 1.02rem; }
   .facts { grid-template-columns: 1fr 1fr; margin-top: 1.75rem; }
-  .portrait { justify-self: start; max-width: 17rem; }
+  .portrait { justify-self: stretch; max-width: none; }
   .bento, .exp { grid-template-columns: 1fr; gap: 1.25rem; }
   #engineeringProjectGrid .p:nth-child(n), .bento--even .p, .bento--even .soon, .soon { grid-column: auto; }
   #engineeringProjectGrid .p:nth-child(n) .img { min-height: 15rem; }
