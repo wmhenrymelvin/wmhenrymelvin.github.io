@@ -23,7 +23,7 @@
 
 <link rel="preload" href="fonts/bricolage-grotesque-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/schibsted-grotesk-variable.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="style.css?v=30">
+<link rel="stylesheet" href="style.css?v=31">
 <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -94,47 +94,41 @@ Bricolage Grotesque for display, Schibsted Grotesk for body. See DESIGN.md.
   <section class="plate reveal" id="summary">
     <div class="wrap">
       <div class="head"><h2>Summary</h2></div>
-      <div class="summary-grid">
+      <div class="shell summary"><div class="core">
+        <!-- 🔧 UPDATE: this is your bio — rewrite in your own words any time -->
         <div class="summary-copy">
-          <!-- 🔧 UPDATE: this is your bio — rewrite in your own words any time -->
-          <p class="statement">
+          <p>
             I am a junior at James Madison University studying Integrated
-            Science and Technology, with a concentration in Manufacturing and a
-            minor in Global Supply Chain Management. I am interested in learning
-            how technology, manufacturing systems, and supply chain operations
-            work together to improve efficiency, solve real-world problems, and
-            support business growth.
+            Science and Technology, with a concentration in Manufacturing and
+            Applied Computing and a minor in Global Supply Chain Management. I
+            am interested in learning how technology, manufacturing systems, and
+            supply chain operations work together to improve efficiency, solve
+            real-world problems, and support business growth.
           </p>
-          <div class="summary-more">
-            <p>
-              Through my coursework, I have gained experience with
-              problem-solving, engineering, programming, energy systems,
-              manufacturing concepts, and technical communication. I enjoy
-              hands-on learning and working on projects that connect classroom
-              knowledge to real industry applications.
-            </p>
-            <p>
-              I am excited to continue building my skills through internship
-              experiences, team-based projects, and opportunities where I can
-              learn from professionals in the field. I am especially interested
-              in roles that allow me to contribute, ask questions, and grow in
-              areas related to manufacturing, engineering, operations,
-              technology, and process improvement.
-            </p>
-          </div>
+          <p>
+            Through my coursework, I have gained experience with
+            problem-solving, engineering, programming, energy systems,
+            manufacturing concepts, and technical communication. I enjoy
+            hands-on learning and working on projects that connect classroom
+            knowledge to real industry applications.
+          </p>
+          <p>
+            I am excited to continue building my skills through internship
+            experiences, team-based projects, and opportunities where I can
+            learn from professionals in the field. I am especially interested
+            in roles that allow me to contribute, ask questions, and grow in
+            areas related to manufacturing, engineering, operations,
+            technology, and process improvement.
+          </p>
         </div>
-
-        <aside class="shell glance"><div class="core">
-          <p class="glance-title">At a glance</p>
-          <dl class="glance-list">
-            <div><dt>University</dt><dd>James Madison University</dd></div>
-            <div><dt>Focus</dt><dd>Integrated Science &amp; Technology</dd></div>
-            <div><dt>Currently</dt><dd>Student, James Madison University</dd></div>
-            <div><dt>Based in</dt><dd>Staunton, Virginia</dd></div>
-            <div><dt>Graduating</dt><dd>May 2028</dd></div>
-          </dl>
-        </div></aside>
-      </div>
+        <dl class="facts">
+          <div><dt>University</dt><dd>James Madison University</dd></div>
+          <div><dt>Concentration</dt><dd>Manufacturing and Applied Computing</dd></div>
+          <div><dt>Minor</dt><dd>Global Supply Chain Management</dd></div>
+          <div><dt>Based in</dt><dd>Staunton, Virginia</dd></div>
+          <div><dt>Graduating</dt><dd>May 2028</dd></div>
+        </dl>
+      </div></div>
     </div>
   </section>
 
@@ -142,7 +136,7 @@ Bricolage Grotesque for display, Schibsted Grotesk for body. See DESIGN.md.
   <section class="plate reveal" id="engineering-projects">
     <div class="wrap">
       <div class="head">
-        <h2>Engineering projects <span class="count" id="engineeringCount"></span></h2>
+        <h2>Engineering projects</h2>
         <p>Select a project to open its full build record.</p>
       </div>
       <!-- Projects render from the ENGINEERING_PROJECTS array in script.js:
@@ -156,7 +150,7 @@ Bricolage Grotesque for display, Schibsted Grotesk for body. See DESIGN.md.
   <section class="plate reveal" id="data-projects">
     <div class="wrap">
       <div class="head">
-        <h2>Data analytics <span class="count" id="dataCount"></span></h2>
+        <h2>Data analytics</h2>
         <p>Select a project to open its full build record.</p>
       </div>
       <!-- Projects render from the DATA_PROJECTS array in script.js. -->
@@ -171,16 +165,31 @@ Bricolage Grotesque for display, Schibsted Grotesk for body. See DESIGN.md.
       <div class="skills-grid">
         <div class="shell"><div class="core pad">
           <h3 class="card-title">Skills</h3>
-          <!-- 🔧 UPDATE: add, remove, or reorder skills freely -->
-          <div class="cloud">
-            <span>Creative Problem Solving</span>
-            <span>Project Management</span>
-            <span>CAD</span>
-            <span>Data Analytics</span>
-            <span>Communication &amp; Leadership</span>
-            <span>Microsoft Word</span>
-            <span>Microsoft Excel</span>
-            <span>Microsoft PowerPoint</span>
+          <!-- 🔧 UPDATE: add, remove, or move skills between groups freely -->
+          <div class="skill-groups">
+            <div class="skill-group">
+              <h4>Engineering &amp; technical</h4>
+              <ul class="cloud">
+                <li>CAD</li>
+                <li>Data Analytics</li>
+              </ul>
+            </div>
+            <div class="skill-group">
+              <h4>Professional</h4>
+              <ul class="cloud">
+                <li>Project Management</li>
+                <li>Creative Problem Solving</li>
+                <li>Communication &amp; Leadership</li>
+              </ul>
+            </div>
+            <div class="skill-group">
+              <h4>Software</h4>
+              <ul class="cloud">
+                <li>Microsoft Word</li>
+                <li>Microsoft Excel</li>
+                <li>Microsoft PowerPoint</li>
+              </ul>
+            </div>
           </div>
         </div></div>
         <div class="shell"><div class="core pad">
@@ -220,7 +229,7 @@ Bricolage Grotesque for display, Schibsted Grotesk for body. See DESIGN.md.
             <h3>B.S., Integrated Science and Technology</h3>
             <p class="org">James Madison University</p>
           </div>
-          <p class="job-desc">Manufacturing Concentration, Global Supply Chain Management Minor.</p>
+          <p class="job-desc">Manufacturing and Applied Computing Concentration, Global Supply Chain Management Minor.</p>
           <p class="job-desc">Member of Phi Kappa Psi Fraternity.</p>
         </div></article>
       </div>
@@ -236,12 +245,15 @@ Bricolage Grotesque for display, Schibsted Grotesk for body. See DESIGN.md.
         <p class="isat-copy">
           ISAT (Integrated Science and Technology) is JMU's ABET-accredited,
           hands-on B.S. program for solving real-world problems across
-          disciplines instead of specializing narrowly from day one — it let
-          me explore before committing to a concentration in Manufacturing
-          junior year. It's built up my data analysis, project management,
-          and multidisciplinary problem-solving skills: connecting technical
-          decisions to the broader systems — institutional, cultural,
-          practical — they actually operate inside of.
+          disciplines instead of specializing narrowly from day one. It let me
+          explore before committing to a concentration in Manufacturing and
+          Applied Computing junior year. At its core, ISAT has been an
+          engineering and manufacturing education for me: designing in CAD,
+          building and testing real hardware, and learning how things are
+          actually made, from the machines on the shop floor to the systems
+          that run them. It has also given me a strong base in project
+          management, which keeps that kind of hands-on work organized and on
+          schedule.
         </p>
       </div>
     </div>
@@ -302,6 +314,6 @@ Bricolage Grotesque for display, Schibsted Grotesk for body. See DESIGN.md.
   </div>
 </div>
 
-<script src="script.js?v=30"></script>
+<script src="script.js?v=31"></script>
 </body>
 </html>

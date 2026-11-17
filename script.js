@@ -627,12 +627,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  /* ---- Section counts (e.g. "05" next to a heading) ---- */
+  /* ---- Certification count next to the Certifications title ---- */
   const pad2 = n => String(n).padStart(2, '0');
-  const setText = (id, text) => { const el = document.getElementById(id); if (el) el.textContent = text; };
-  setText('engineeringCount', pad2(ENGINEERING_PROJECTS.length));
-  setText('dataCount', pad2(DATA_PROJECTS.length));
-  setText('certCount', String(CERTIFICATIONS.length));
+  const certCountEl = document.getElementById('certCount');
+  if (certCountEl) certCountEl.textContent = String(CERTIFICATIONS.length);
 
   /* ---- Render certifications ---- */
   const certGrid = document.getElementById('certGrid');

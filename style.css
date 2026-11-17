@@ -284,7 +284,8 @@ h1 .dot { color: var(--signal); }
 .btn:hover i { transform: translate(2px, -1px); }
 .btn svg, .arrow svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
 
-.portrait { position: relative; }
+/* Capped near the headshot file's own width (560px) so it stays sharp on high-DPI screens */
+.portrait { position: relative; width: 100%; max-width: 19rem; justify-self: end; }
 .portrait-frame { --r: 2.5rem; --pad: .5rem; transform: rotate(1.5deg); }
 .portrait-frame .core { aspect-ratio: 4 / 5; }
 .portrait-frame img { width: 100%; height: 100%; object-fit: cover; object-position: center 22%; }
@@ -321,56 +322,29 @@ h2 {
   text-wrap: balance;
 }
 .head p { max-width: 22rem; color: var(--ink-2); }
-.count {
-  font-family: var(--display);
-  font-weight: 500;
-  color: var(--ink-3);
-  font-size: .5em;
-  letter-spacing: -.02em;
-  vertical-align: super;
-  font-variant-numeric: tabular-nums;
-}
-
-/* ---------- summary ---------- */
-.summary-grid {
+/* ---------- summary: one panel, bio on top, key facts along the bottom ---------- */
+.summary .core { padding: clamp(1.75rem, 4vw, 3rem); }
+.summary-copy {
   display: grid;
-  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
-  gap: 3rem;
-  align-items: start;
-}
-.statement {
-  font-family: var(--display);
-  font-weight: 500;
-  font-size: clamp(1.35rem, 2.3vw, 2rem);
-  line-height: 1.22;
-  letter-spacing: -.025em;
-  text-wrap: pretty;
-}
-.summary-more {
-  margin-top: 2rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  gap: 1.1rem;
+  max-width: 70ch;
+  font-size: 1.12rem;
+  line-height: 1.65;
   color: var(--ink-2);
   text-wrap: pretty;
 }
-.glance { --r: 1.75rem; }
-.glance .core { padding: 1.6rem 1.75rem; }
-.glance-title {
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: 1.15rem;
-  letter-spacing: -.02em;
-  margin-bottom: .75rem;
-}
-.glance-list div {
-  display: grid;
-  gap: .1rem;
-  padding: .75rem 0;
+.summary-copy p:first-child { color: var(--ink); }
+.facts {
+  margin-top: 2.25rem;
+  padding-top: 1.5rem;
   border-top: 1px solid var(--hair);
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, auto));
+  justify-content: space-between;
+  gap: 1.25rem 2rem;
 }
-.glance-list dt { font-size: .8rem; color: var(--ink-3); }
-.glance-list dd { font-weight: 500; }
+.facts dt { font-size: .8rem; color: var(--ink-3); }
+.facts dd { font-weight: 500; margin-top: .1rem; }
 
 /* ---------- project bento ---------- */
 .bento { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1rem; }
@@ -486,8 +460,10 @@ h2 {
   align-items: baseline;
 }
 .card-title b { font-size: 2.4rem; letter-spacing: -.05em; line-height: .8; color: var(--signal); font-variant-numeric: tabular-nums; }
-.cloud { display: flex; flex-wrap: wrap; gap: .4rem; }
-.cloud span { padding: .45rem .85rem; border-radius: 999px; background: var(--bg); font-size: .88rem; color: var(--ink-2); }
+.skill-groups { display: grid; gap: 1.4rem; }
+.skill-group h4 { font-size: .8rem; font-weight: 500; color: var(--ink-3); margin-bottom: .55rem; }
+.cloud { list-style: none; display: flex; flex-wrap: wrap; gap: .4rem; }
+.cloud li { padding: .45rem .85rem; border-radius: 999px; background: var(--bg); font-size: .9rem; color: var(--ink); }
 .cert-list { display: grid; grid-template-columns: 1fr 1fr; column-gap: 1.5rem; }
 .cert-card {
   display: flex;
@@ -697,7 +673,8 @@ a.cert-card:hover { background: var(--bg); }
   #engineeringProjectGrid .p:nth-child(1) { grid-column: 1 / -1; }
   #engineeringProjectGrid .p:nth-child(1) .img { min-height: 22rem; }
   .bento--even .p, .bento--even .soon { grid-column: span 6; }
-  .summary-grid, .isat { grid-template-columns: 1fr; gap: 2rem; }
+  .isat { grid-template-columns: 1fr; gap: 2rem; }
+  .facts { grid-template-columns: repeat(3, minmax(0, 1fr)); justify-content: stretch; }
   .skills-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 900px) {
@@ -715,7 +692,9 @@ a.cert-card:hover { background: var(--bg); }
   .links { margin-top: 2rem; }
   .plate { padding-block: 4rem; }
   .head { flex-direction: column; align-items: flex-start; gap: .75rem; margin-bottom: 1.75rem; }
-  .summary-more { grid-template-columns: 1fr; gap: 1rem; margin-top: 1.5rem; }
+  .summary-copy { font-size: 1.02rem; }
+  .facts { grid-template-columns: 1fr 1fr; margin-top: 1.75rem; }
+  .portrait { justify-self: start; max-width: 17rem; }
   .bento, .exp { grid-template-columns: 1fr; gap: 1.25rem; }
   #engineeringProjectGrid .p:nth-child(n), .bento--even .p, .bento--even .soon, .soon { grid-column: auto; }
   #engineeringProjectGrid .p:nth-child(n) .img { min-height: 15rem; }

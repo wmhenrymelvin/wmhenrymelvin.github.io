@@ -16,7 +16,7 @@ Engineering recruiters and hiring managers evaluating Henry Melvin for internshi
 
 ## Product Purpose
 
-Personal portfolio for Henry Melvin, a junior studying Integrated Science and Technology (Manufacturing concentration, Global Supply Chain Management minor) at James Madison University. Exists to land a Summer 2027 engineering internship by showing real, hands-on project work, current internship experience, and certifications.
+Personal portfolio for Henry Melvin, a junior studying Integrated Science and Technology (Manufacturing and Applied Computing concentration, Global Supply Chain Management minor) at James Madison University. Exists to land a Summer 2027 engineering internship by showing real, hands-on project work, current internship experience, and certifications.
 
 ## Positioning
 
