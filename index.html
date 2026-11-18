@@ -23,7 +23,7 @@
 
 <link rel="preload" href="fonts/archivo-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/schibsted-grotesk-variable.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="style.css?v=44">
+<link rel="stylesheet" href="style.css?v=49">
 <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -211,7 +211,7 @@ Archivo Expanded for display, Schibsted Grotesk for body. See DESIGN.md.
       <!-- 🔧 UPDATE: edit dates, titles, and descriptions as your experience changes -->
       <div class="exp">
         <article class="job dark shell"><div class="core">
-          <span class="when live">May 2026 – August 2026</span>
+          <span class="when">May 2026 – August 2026</span>
           <div>
             <h3>Engineering Intern</h3>
             <p class="org"><a href="https://ryzingtech.com" target="_blank" rel="noopener">Ryzing Technologies</a>, Staunton, VA</p>
@@ -223,6 +223,18 @@ Archivo Expanded for display, Schibsted Grotesk for body. See DESIGN.md.
             sleds. Used CAD software for engineering and design work, and
             operated CNC machines, mills, lathes, and industrial sewing
             equipment in a fast-paced production environment.
+          </p>
+        </div></article>
+        <article class="job shell"><div class="core">
+          <span class="when live">Fall 2026 – Present</span>
+          <div>
+            <h3>Student Research Assistant</h3>
+            <p class="org">JMU School of Integrated Sciences, Harrisonburg, VA</p>
+          </div>
+          <p class="job-desc">
+            Joined a grant-funded research team building a cyber-manufacturing
+            testbed around JMU's flexible manufacturing system, working with a
+            faculty team across Integrated Sciences and Computer Science.
           </p>
         </div></article>
         <article class="job shell"><div class="core">
@@ -294,12 +306,14 @@ Archivo Expanded for display, Schibsted Grotesk for body. See DESIGN.md.
       <div class="step-viewer-media">
         <img class="step-viewer-image" id="modalStepImage" alt="">
         <video class="step-viewer-image" id="modalStepVideo" controls playsinline></video>
+        <iframe class="step-viewer-embed" id="modalStepEmbed" src="about:blank" loading="lazy" allow="fullscreen" style="display:none"></iframe>
         <div class="step-viewer-images-row" id="modalStepImagesRow"></div>
       </div>
       <div class="step-viewer-body">
         <p class="step-count" id="modalStepCount"></p>
         <h4 class="step-viewer-title" id="modalStepTitle"></h4>
         <p class="step-viewer-desc" id="modalStepDesc"></p>
+        <a class="step-link" id="modalStepLink" target="_blank" rel="noopener"></a>
         <div class="step-viewer-table" id="modalStepTable"></div>
         <pre class="step-viewer-code" id="modalStepCode"><code id="modalStepCodeText"></code></pre>
       </div>
@@ -316,6 +330,6 @@ Archivo Expanded for display, Schibsted Grotesk for body. See DESIGN.md.
   </div>
 </div>
 
-<script src="script.js?v=38"></script>
+<script src="script.js?v=50"></script>
 </body>
 </html>

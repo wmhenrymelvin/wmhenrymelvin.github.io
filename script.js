@@ -352,16 +352,65 @@ const ENGINEERING_PROJECTS = [
     ],
   },
   {
-    title: "Analog Line-Tracking Robot",
+    title: "Micro-Hydropower Site Analysis",
+    thumbnail: "images/hydro-3d-model.jpg",
     description:
-      "An autonomous robot that follows a track using analog sensor " +
-      "feedback.",
+      "A capstone team study of a micro-hydropower plant at a wastewater " +
+      "outfall on the North River, for the 2027 Hydropower Collegiate " +
+      "Competition.",
     steps: [
       {
-        title: "Overview",
+        title: "The Question",
+        embed: "projects/hydro-3d-model.html",
+        link: { href: "projects/hydro-3d-model.html", label: "Open the 3D model full screen" },
         description:
-          "More details on this project, including how it works and the " +
-          "build process, are coming soon.",
+          "Fall 2026 to present, with a student team entering the U.S. " +
+          "Department of Energy's 2027 Hydropower Collegiate Competition. " +
+          "The site is the HRRSA North River Wastewater Treatment Facility " +
+          "in Mt. Crawford, VA, where about 21 cfs of treated effluent " +
+          "drops down a wooded bluff to the North River. The question was " +
+          "whether that drop could produce 100 kW. The 3D site model above " +
+          "drapes Google Earth imagery over the terrain so each concept can " +
+          "be compared in place: drag to orbit, scroll to zoom, and switch " +
+          "concepts in its panel.",
+      },
+      {
+        title: "Measuring the Head",
+        image: "images/hydro-head-profile.png",
+        description:
+          "USGS 3DEP 1 m LiDAR puts the gross drop from the top of the " +
+          "existing cascade aerator to the river at about 40 ft, with a " +
+          "likely range of 35 to 47 ft. At 21 cfs and 70 to 80% " +
+          "water-to-wire efficiency, 100 kW would need 70 to 80 ft of net " +
+          "head, so the site has roughly half of what the target requires.",
+      },
+      {
+        title: "Penstock Concept",
+        image: "images/hydro-site-plan.png",
+        description:
+          "A buried 30 in HDPE penstock beside the existing cascade loses " +
+          "only about 1.3 ft of head on the way down, leaving about 38.7 ft " +
+          "at the turbines. That works out to about 52 kW (42 to 65 kW " +
+          "across the head range), or roughly 430 MWh per year. The cascade " +
+          "stays in place as an automatic bypass and keeps aerating the " +
+          "effluent.",
+      },
+      {
+        title: "Recommendation",
+        description:
+          "100 kW is not reachable by gravity at this flow. Pumping effluent " +
+          "uphill for extra head would cost about 86 kW to gain about 48 kW, " +
+          "a net loss. The recommendation is to re-rate the project to about " +
+          "50 kW, using five 10 kW reaction turbines fed by the 30 in " +
+          "penstock, and to confirm the water surface elevation against " +
+          "HRRSA's record drawings.",
+        table: {
+          headers: ["Concept", "Expected output", "Trade-off"],
+          rows: [
+            ["Penstock, 5 × 10 kW turbines", "≈ 52 kW", "Most power; needs surge protection"],
+            ["Original target", "100 kW", "Needs 70 to 80 ft of head; site has ≈ 40 ft"],
+          ],
+        },
       },
     ],
   },
@@ -674,6 +723,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalStepViewer = document.getElementById('modalStepViewer');
   const modalProjectTitle = document.getElementById('modalProjectTitle');
   const modalStepCount = document.getElementById('modalStepCount');
+  const modalStepLink = document.getElementById('modalStepLink');
+  const modalStepEmbed = document.getElementById('modalStepEmbed');
 
   let activeSteps = [];
   let activeStepIndex = 0;
@@ -698,8 +749,17 @@ document.addEventListener('DOMContentLoaded', () => {
     modalStepImage.style.display = 'none';
     modalStepImagesRow.style.display = 'none';
     modalStepImagesRow.innerHTML = '';
+    if (modalStepEmbed) {
+      modalStepEmbed.style.display = 'none';
+      if (modalStepEmbed.getAttribute('src') !== 'about:blank') modalStepEmbed.src = 'about:blank';
+    }
 
-    if (step.images && step.images.length) {
+    if (step.embed && modalStepEmbed) {
+      // Live interactive page (e.g. a 3D model) shown inside the step
+      modalStepEmbed.src = step.embed;
+      modalStepEmbed.title = step.title || 'Embedded model';
+      modalStepEmbed.style.display = 'block';
+    } else if (step.images && step.images.length) {
       modalStepImagesRow.innerHTML = step.images
         .map(src => `<img src="${src}" alt="${step.title || ''}">`)
         .join('');
@@ -714,6 +774,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     modalStepDesc.textContent = step.description;
+
+    // Optional link button, e.g. { href: "projects/model.html", label: "Open the 3D model" }
+    if (modalStepLink) {
+      if (step.link && step.link.href) {
+        modalStepLink.href = step.link.href;
+        modalStepLink.textContent = step.link.label || 'Open';
+        modalStepLink.style.display = 'inline-flex';
+      } else {
+        modalStepLink.removeAttribute('href');
+        modalStepLink.style.display = 'none';
+      }
+    }
 
     // Optional data table — e.g. { headers: [...], rows: [[...], ...] }.
     // A cell whose value is one of the known grade tokens renders as a
@@ -794,6 +866,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function closeModal() {
     modalOverlay.classList.remove('is-open');
+    if (modalStepEmbed) { modalStepEmbed.src = 'about:blank'; modalStepEmbed.style.display = 'none'; }
     modalStepVideo.pause();
   }
 

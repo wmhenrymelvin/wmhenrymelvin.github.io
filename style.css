@@ -471,6 +471,10 @@ h2 {
 #engineeringProjectGrid .p:nth-child(3) { grid-column: span 5; }
 #engineeringProjectGrid .p:nth-child(4) { grid-column: span 7; }
 #engineeringProjectGrid .p:nth-child(5) { grid-column: span 5; }
+/* a sixth project sits beside the "more coming soon" panel */
+#engineeringProjectGrid .p:nth-child(6) { grid-column: span 7; }
+#engineeringProjectGrid .p:nth-child(6) + .soon { grid-column: span 5; }
+#engineeringProjectGrid .p:nth-child(6) .img { min-height: 18rem; }
 #engineeringProjectGrid .p:nth-child(4) .img,
 #engineeringProjectGrid .p:nth-child(5) .img { min-height: 18rem; }
 
@@ -525,7 +529,10 @@ a.cert-card:hover { background: var(--bg); color: var(--signal-ink); }
 .cert-card-logo { width: 1.25rem; height: 1.25rem; object-fit: contain; border-radius: 4px; mix-blend-mode: multiply; flex: none; }
 
 /* ---------- experience ---------- */
-.exp { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 1rem; }
+.exp { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1rem; }
+/* the internship runs full width on top; the other roles sit side by side below */
+.exp .job.dark { grid-column: 1 / -1; }
+.exp .job:not(.dark) .core { padding: 2rem; gap: 1rem; }
 .job .core { padding: 2.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
 .when { font-size: .85rem; color: var(--ink-3); font-weight: 500; }
 .job h3 {
@@ -645,6 +652,7 @@ a.cert-card:hover { background: var(--bg); color: var(--signal-ink); }
   margin: 0 auto;
   background: #0D1015;
 }
+.step-viewer-embed { display: block; width: 100%; height: min(62dvh, 560px); border: 0; background: #dfe6ea; }
 .step-viewer-images-row { display: flex; gap: 2px; }
 .step-viewer-images-row img {
   flex: 1 1 0;
@@ -665,9 +673,24 @@ a.cert-card:hover { background: var(--bg); color: var(--signal-ink); }
   letter-spacing: -.02em;
   margin-bottom: .6rem;
 }
+.step-link {
+  display: none;
+  margin-top: 1rem;
+  align-items: center;
+  gap: .5rem;
+  padding: .6rem 1.1rem;
+  border-radius: 999px;
+  background: var(--signal);
+  color: #fff;
+  font-weight: 500;
+  font-size: .9rem;
+  transition: transform .2s var(--ease-out);
+}
+.step-link::after { content: "→"; font-family: var(--body); }
+.step-link:active { transform: scale(.97); }
 .step-viewer-desc { color: var(--ink-2); max-width: 70ch; text-wrap: pretty; }
 .step-viewer-table { display: none; margin-top: 1.25rem; overflow-x: auto; background: var(--core); border-radius: 1rem; box-shadow: inset 0 0 0 1px var(--hair); }
-.step-viewer-table table { width: 100%; border-collapse: collapse; font-size: .9rem; font-variant-numeric: tabular-nums; }
+.step-viewer-table table { width: 100%; border-collapse: collapse; font-size: .9rem; }
 .step-viewer-table th, .step-viewer-table td { text-align: left; padding: .65rem 1rem; border-bottom: 1px solid var(--hair); }
 .step-viewer-table th { font-size: .78rem; font-weight: 600; color: var(--ink-3); }
 .step-viewer-table tr:last-child td { border-bottom: 0; }
@@ -720,6 +743,7 @@ a.cert-card:hover { background: var(--bg); color: var(--signal-ink); }
 }
 @media (max-width: 1024px) {
   #engineeringProjectGrid .p:nth-child(n) { grid-column: span 6; grid-row: auto; }
+  #engineeringProjectGrid .p:nth-child(6) + .soon { grid-column: span 6; }
   #engineeringProjectGrid .p:nth-child(1) { grid-column: 1 / -1; }
   #engineeringProjectGrid .p:nth-child(1) .img { min-height: 22rem; }
   .bento--even .p, .bento--even .soon { grid-column: span 6; }
@@ -748,6 +772,8 @@ a.cert-card:hover { background: var(--bg); color: var(--signal-ink); }
   .facts { grid-template-columns: 1fr 1fr; margin-top: 1.75rem; }
   .portrait { justify-self: stretch; max-width: none; }
   .bento, .exp { grid-template-columns: 1fr; gap: 1.25rem; }
+  .exp .job.dark { grid-column: auto; }
+  #engineeringProjectGrid .p:nth-child(6) + .soon { grid-column: auto; }
   #engineeringProjectGrid .p:nth-child(n), .bento--even .p, .bento--even .soon, .soon { grid-column: auto; }
   #engineeringProjectGrid .p:nth-child(n) .img { min-height: 15rem; }
   #engineeringProjectGrid .p:nth-child(1) .t { font-size: 1.4rem; }
