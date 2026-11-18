@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Share card source — 1200×630</title>
+<!--
+  Source for images/og-preview.png, the link preview LinkedIn, iMessage and
+  Slack show when the portfolio URL is shared. Not linked from the site.
+
+  TO REGENERATE: open this file at exactly 1200×630 and screenshot the card,
+  save over images/og-preview.png, then bump ?v= on the og:image URL in
+  index.html so LinkedIn and friends refetch it.
+-->
+<style>
+@font-face {
+  font-family: "Archivo";
+  src: url("fonts/archivo-variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: block;
+}
+@font-face {
+  font-family: "Schibsted Grotesk";
+  src: url("fonts/schibsted-grotesk-variable.woff2") format("woff2");
+  font-weight: 400 900;
+  font-display: block;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("fonts/jetbrains-mono-variable.woff2") format("woff2");
+  font-weight: 100 800;
+  font-display: block;
+}
+
+:root {
+  --bg: #E3E7EB;
+  --shell: rgb(17 22 28 / .045);
+  --hair: rgb(17 22 28 / .08);
+  --core: #F5F7F9;
+  --ink: #11161C;
+  --ink-2: #3E4752;
+  --ink-3: #56606C;
+  --signal: #1F55B8;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1200px; height: 630px; overflow: hidden; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Schibsted Grotesk", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  padding: 40px;
+}
+
+/* the hairline tray + near-white core, same treatment as the site's panels */
+.shell {
+  flex: 1;
+  background: var(--shell);
+  border: 1px solid var(--hair);
+  border-radius: 32px;
+  padding: 10px;
+}
+.core {
+  position: relative;
+  height: 100%;
+  background: var(--core);
+  border: 1px solid var(--hair);
+  border-radius: 23px;
+  padding: 50px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+/* oversized watermark, same device as the site's section marks */
+.mark {
+  position: absolute;
+  right: -26px;
+  top: -74px;
+  font-family: "Archivo", sans-serif;
+  font-weight: 700;
+  font-stretch: 125%;
+  font-size: 300px;
+  line-height: 1;
+  color: #fff;
+  letter-spacing: -.03em;
+  pointer-events: none;
+}
+
+.top { position: relative; max-width: 740px; }
+.eyebrow {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 26px;
+}
+h1 {
+  font-family: "Archivo", sans-serif;
+  font-weight: 700;
+  font-stretch: 125%;
+  font-size: 104px;
+  line-height: .94;
+  letter-spacing: -.025em;
+}
+h1 .dot { color: var(--signal); }
+.lede {
+  margin-top: 26px;
+  font-size: 29px;
+  line-height: 1.35;
+  color: var(--ink-2);
+  max-width: 33ch;
+  font-weight: 500;
+}
+
+.bottom { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+.chips { display: flex; gap: 9px; }
+.chip {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink-2);
+  background: var(--bg);
+  border: 1px solid var(--hair);
+  border-radius: 999px;
+  padding: 8px 16px;
+  white-space: nowrap;
+}
+.url {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.url b { color: var(--signal); font-weight: 500; }
+</style>
+</head>
+<body>
+  <div class="shell"><div class="core">
+    <span class="mark" aria-hidden="true">HM</span>
+
+    <div class="top">
+      <p class="eyebrow">Engineering Portfolio</p>
+      <h1>Henry<br>Melvin<span class="dot">.</span></h1>
+      <p class="lede">Manufacturing &amp; Applied Computing at James Madison University</p>
+    </div>
+
+    <div class="bottom">
+      <div class="chips">
+        <span class="chip">Throttle control</span>
+        <span class="chip">SWIFTS</span>
+        <span class="chip">ISAS</span>
+        <span class="chip">AI bike fit</span>
+        <span class="chip">Micro-hydropower</span>
+      </div>
+      <span class="url">wmhenrymelvin.github.io<b>/</b></span>
+    </div>
+  </div></div>
+</body>
+</html>
