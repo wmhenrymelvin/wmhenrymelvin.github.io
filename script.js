@@ -269,7 +269,7 @@ const ENGINEERING_PROJECTS = [
   },
   {
     title: "AI Bike Fit Analyzer",
-    thumbnail: "images/bike-fit-diagram.svg?v=2",
+    thumbnail: "images/bike-fit-diagram.svg?v=4",
     description:
       "An AI tool that grades a road bike fit from a single phone video.",
     steps: [
@@ -788,7 +788,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     modalOverlay.classList.add('is-open');
-    modalClose.focus();
+    // Focus the dialog itself so the close button doesn't show a focus ring on open
+    modalOverlay.querySelector('.modal').focus({ preventScroll: true });
   }
 
   function closeModal() {
@@ -801,11 +802,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // Shown on a card when a project has no photo at all (thumbnail or step image).
   const NO_PHOTO_ART = `
     <svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      <path d="M-20 190 C 60 190, 80 70, 170 80 S 260 210, 330 150 S 400 60, 440 70" fill="none" stroke="rgba(246,245,241,.14)" stroke-width="22" stroke-linecap="round"/>
-      <path d="M-20 190 C 60 190, 80 70, 170 80 S 260 210, 330 150 S 400 60, 440 70" fill="none" stroke="#141412" stroke-width="6" stroke-linecap="round"/>
-      <path d="M-20 190 C 60 190, 80 70, 170 80 S 260 210, 330 150 S 400 60, 440 70" fill="none" stroke="rgba(246,245,241,.5)" stroke-width="1" stroke-dasharray="2 7"/>
-      <circle cx="250" cy="168" r="9" fill="#E4572E"/>
-      <circle cx="250" cy="168" r="20" fill="none" stroke="rgba(228,87,46,.35)"/>
+      <path d="M-20 190 C 60 190, 80 70, 170 80 S 260 210, 330 150 S 400 60, 440 70" fill="none" stroke="rgba(245,247,249,.14)" stroke-width="22" stroke-linecap="round"/>
+      <path d="M-20 190 C 60 190, 80 70, 170 80 S 260 210, 330 150 S 400 60, 440 70" fill="none" stroke="#11161C" stroke-width="6" stroke-linecap="round"/>
+      <path d="M-20 190 C 60 190, 80 70, 170 80 S 260 210, 330 150 S 400 60, 440 70" fill="none" stroke="rgba(245,247,249,.5)" stroke-width="1" stroke-dasharray="2 7"/>
+      <circle cx="250" cy="168" r="9" fill="#1F55B8"/>
+      <circle cx="250" cy="168" r="20" fill="none" stroke="rgba(31,85,184,.35)"/>
     </svg>
     <span class="lbl">No photo yet</span>`;
 

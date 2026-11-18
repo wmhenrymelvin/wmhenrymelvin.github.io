@@ -5,23 +5,25 @@ at the git tag `original-design`.
 
 ## World
 
-"Machined Hardware." Warm silver-grey ground with a faint grain, off-white
+"Machined Hardware." Cool steel-grey ground with a faint grain, near-white
 panels seated in hairline trays like parts held in an aluminium fixture, and a
-single safety-orange signal colour. Chosen by Henry from a five-way concept
-comparison (concept 4, built with the high-end-visual-design skill).
+single layout-dye blue signal colour (the blue machinists brush on metal before
+scribing it). Chosen by Henry from a five-way concept comparison (concept 4,
+built with the high-end-visual-design skill); the palette was switched from
+safety orange to layout-dye blue on 2026-11-17.
 
 ## Color
 
-One accent, used sparingly. Everything else is warm neutral.
+One accent, used sparingly. Everything else is cool neutral.
 
-- `--bg` `#E7E6E1` page ground; `--bg-2` `#DEDDD7` image wells.
-- `--core` `#F6F5F1` panel surface; `--shell` / `--hair` are low-alpha ink used
+- `--bg` `#E3E7EB` page ground; `--bg-2` `#D9DEE3` image wells.
+- `--core` `#F5F7F9` panel surface; `--shell` / `--hair` are low-alpha ink used
   for the outer tray and its 1px inset border, so they hold on any surface.
-- `--ink` `#141412` text; `--ink-2` `#4E4D48` body copy; `--ink-3` `#605F59`
+- `--ink` `#11161C` text; `--ink-2` `#3E4752` body copy; `--ink-3` `#56606C`
   labels and captions (all at or above 4.5:1 on `--core` and `--bg`).
-- `--signal` `#E4572E` safety orange: the dot after the name, the live dot,
+- `--signal` `#1F55B8` layout-dye blue: the dot after the name, the live dot,
   the nav indicator, the certification count, the footer CTA, focus rings.
-  `--signal-ink` `#A93A17` is the darker version for small orange text.
+  `--signal-ink` `#1A4A9E` is the darker version for small blue text.
 - Status colours appear only in the bike-fit grade table:
   `--good` `#2F8A55`, `--watch` `#C98418`, `--fail` `#C8442C`.
 - Dark panels (`.job.dark`, footer `.end`) invert to `--ink` with
@@ -31,9 +33,10 @@ One accent, used sparingly. Everything else is warm neutral.
 
 Self-hosted variable fonts in `fonts/` (OFL, see `fonts/LICENSES.md`).
 
-- **Bricolage Grotesque** (display): name, section headings, card titles,
-  the summary statement and the Why ISAT copy. Tight negative tracking
-  (-0.03em to -0.055em) at large sizes.
+- **Archivo Expanded** (display, `font-stretch: 125%`): name, section
+  headings, card titles, and the giant faded "HM" behind the hero. Chosen to
+  echo Nike's wide athletic display type. The Why ISAT paragraph uses Archivo
+  at normal width so the long text stays readable.
 - **Schibsted Grotesk** (body): paragraphs, chips, labels, nav.
 - **JetBrains Mono**: only code blocks inside project steps.
 - Counts and step numbers use `tabular-nums`.
@@ -47,7 +50,8 @@ Self-hosted variable fonts in `fonts/` (OFL, see `fonts/LICENSES.md`).
   script.js). Below 900px it becomes a burger that opens a full-screen sheet.
 - **Hero**: oversized two-line name with an orange full stop, one-sentence
   lede (the site's existing meta description), Resume button plus contact
-  chips, tilted portrait with a small "Graduating May 2028" tag.
+  chips, tilted portrait with a small "Graduating May 2028" tag, and a giant white
+  "HM" at 60% opacity behind it all (`.hero-mark`).
 - **Project bento** (`.bento`): engineering projects use a 7/5 layout with the
   first project as the feature card; data projects use three equal columns.
   Cards are `<button class="p shell">`, built by `renderProjectGrid()` in

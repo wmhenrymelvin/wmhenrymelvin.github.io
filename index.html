@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Henry Melvin | Portfolio</title>
 <meta name="description" content="Henry Melvin, Integrated Science and Technology student at James Madison University with engineering internship experience at Ryzing Technologies.">
-<meta name="theme-color" content="#E7E6E1">
+<meta name="theme-color" content="#E3E7EB">
 
 <!-- Social share preview (LinkedIn, iMessage, Slack, Twitter/X) -->
 <meta property="og:type" content="website">
@@ -18,19 +18,19 @@
 <meta name="twitter:description" content="Integrated Science and Technology student at James Madison University with engineering internship experience at Ryzing Technologies.">
 <meta name="twitter:image" content="https://wmhenrymelvin.github.io/images/headshot.jpg">
 
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="alternate icon" href="favicon.svg">
+<link rel="icon" href="favicon.svg?v=4" type="image/svg+xml">
+<link rel="alternate icon" href="favicon.svg?v=4">
 
-<link rel="preload" href="fonts/bricolage-grotesque-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/archivo-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/schibsted-grotesk-variable.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="style.css?v=34">
+<link rel="stylesheet" href="style.css?v=44">
 <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 <!--
 DESIGN: "Machined Hardware". Warm silver-grey ground, off-white panels set in
 hairline trays like parts in an aluminium fixture, one safety-orange signal.
-Bricolage Grotesque for display, Schibsted Grotesk for body. See DESIGN.md.
+Archivo Expanded for display, Schibsted Grotesk for body. See DESIGN.md.
 -->
 
 <!-- ============ NAV ============ -->
@@ -60,6 +60,7 @@ Bricolage Grotesque for display, Schibsted Grotesk for body. See DESIGN.md.
 
 <!-- ============ HERO ============ -->
 <header class="hero wrap" id="top">
+  <span class="hero-mark" aria-hidden="true">HM</span>
   <div class="hero-grid">
     <div class="hero-copy">
       <h1 class="rise">Henry<br>Melvin<span class="dot">.</span></h1>
@@ -91,7 +92,7 @@ Bricolage Grotesque for display, Schibsted Grotesk for body. See DESIGN.md.
 <main>
 
   <!-- ============ SUMMARY ============ -->
-  <section class="plate reveal" id="summary">
+  <section class="plate reveal" id="summary" data-mark="ABOUT">
     <div class="wrap">
       <div class="head"><h2>Summary</h2></div>
       <div class="shell summary"><div class="core">
@@ -133,7 +134,7 @@ Bricolage Grotesque for display, Schibsted Grotesk for body. See DESIGN.md.
   </section>
 
   <!-- ============ ENGINEERING PROJECTS ============ -->
-  <section class="plate reveal" id="engineering-projects">
+  <section class="plate reveal" id="engineering-projects" data-mark="BUILD">
     <div class="wrap">
       <div class="head">
         <h2>Engineering projects</h2>
@@ -147,7 +148,7 @@ Bricolage Grotesque for display, Schibsted Grotesk for body. See DESIGN.md.
   </section>
 
   <!-- ============ DATA ANALYTICS PROJECTS ============ -->
-  <section class="plate reveal" id="data-projects">
+  <section class="plate reveal" id="data-projects" data-mark="DATA">
     <div class="wrap">
       <div class="head">
         <h2>Data analytics</h2>
@@ -159,7 +160,7 @@ Bricolage Grotesque for display, Schibsted Grotesk for body. See DESIGN.md.
   </section>
 
   <!-- ============ SKILLS + CERTIFICATIONS ============ -->
-  <section class="plate reveal" id="skills">
+  <section class="plate reveal" id="skills" data-mark="TOOLS">
     <div class="wrap">
       <div class="head"><h2>Skills &amp; certifications</h2></div>
       <div class="skills-grid">
@@ -203,7 +204,7 @@ Bricolage Grotesque for display, Schibsted Grotesk for body. See DESIGN.md.
   </section>
 
   <!-- ============ EXPERIENCE ============ -->
-  <section class="plate reveal" id="experience">
+  <section class="plate reveal" id="experience" data-mark="WORK">
     <div class="wrap">
       <div class="head"><h2>Experience</h2></div>
       <!-- 🔧 UPDATE: edit dates, titles, and descriptions as your experience changes -->
@@ -237,7 +238,7 @@ Bricolage Grotesque for display, Schibsted Grotesk for body. See DESIGN.md.
   </section>
 
   <!-- ============ WHY ISAT ============ -->
-  <section class="plate reveal" id="why-isat">
+  <section class="plate reveal" id="why-isat" data-mark="ISAT">
     <div class="wrap">
       <div class="head"><h2>Why ISAT</h2></div>
       <div class="shell isat"><div class="core">
@@ -280,7 +281,7 @@ Bricolage Grotesque for display, Schibsted Grotesk for body. See DESIGN.md.
 
 <!-- ============ PROJECT DETAIL MODAL ============ -->
 <div class="modal-overlay" id="modalOverlay">
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalProjectTitle">
+  <div class="modal" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="modalProjectTitle">
     <div class="modal-head">
       <h3 class="modal-project" id="modalProjectTitle"></h3>
       <button class="modal-close" id="modalClose" type="button" aria-label="Close project details">
@@ -314,6 +315,6 @@ Bricolage Grotesque for display, Schibsted Grotesk for body. See DESIGN.md.
   </div>
 </div>
 
-<script src="script.js?v=34"></script>
+<script src="script.js?v=38"></script>
 </body>
 </html>
